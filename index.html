@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isack Foster | Desenvolvedor Backend & RPA</title>
+    <title>Isack Vitor | Desenvolvedor Backend & RPA</title>
     
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,11 +20,11 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#0f172a',      /* Azul Escuro Profundo (Slate 900) */
-                        secondary: '#0ea5e9',    /* Azul Celeste Vibrante (Sky 500) */
-                        accent: '#38bdf8',       /* Azul Claro (Sky 400) */
-                        neutral: '#1e293b',      /* Cinza Azulado (Slate 800) */
-                        base100: '#f8fafc',      /* Fundo quase branco (Slate 50) */
+                        primary: '#0f172a',      /* Azul Escuro Profundo */
+                        secondary: '#0ea5e9',    /* Azul Celeste Vibrante */
+                        accent: '#38bdf8',       /* Azul Claro */
+                        neutral: '#1e293b',      /* Cinza Azulado */
+                        base100: '#f8fafc',      /* Fundo quase branco */
                     }
                 }
             }
@@ -32,11 +32,6 @@
     </script>
     <style>
         body { scroll-behavior: smooth; }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans">
@@ -44,12 +39,14 @@
     <div class="navbar bg-primary text-white sticky top-0 z-50 shadow-lg backdrop-blur-md bg-opacity-90">
         <div class="container mx-auto">
             <div class="flex-1">
-                <a class="btn btn-ghost text-xl tracking-tighter"><span class="text-secondary">&lt;</span>Isack Foster<span class="text-secondary">/&gt;</span></a>
+                <a class="btn btn-ghost text-xl tracking-tighter">
+                    <span class="text-secondary">&lt;</span>Isack Vitor<span class="text-secondary">/&gt;</span>
+                </a>
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal px-1 hidden md:flex">
                     <li><a href="#sobre" class="hover:text-secondary transition">Sobre</a></li>
-                    <li><a href="#skills" class="hover:text-secondary transition">Skills</a></li>
+                    <li><a href="#infra" class="hover:text-secondary transition">Infra & RPA</a></li>
                     <li><a href="#experiencia" class="hover:text-secondary transition">Experiência</a></li>
                     <li><a href="#projetos" class="hover:text-secondary transition">Projetos</a></li>
                 </ul>
@@ -58,23 +55,23 @@
         </div>
     </div>
 
-    <div class="hero min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white">
+    <div class="hero min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 text-white">
         <div class="absolute top-20 left-10 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style="animation-delay: 2s"></div>
+        <div class="absolute bottom-20 right-10 w-72 h-72 bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style="animation-delay: 2s"></div>
 
         <div class="hero-content text-center relative z-10">
-            <div class="max-w-3xl">
-                <div class="badge badge-secondary badge-outline mb-4 p-3">Disponível para novos projetos</div>
+            <div class="max-w-4xl">
+                <div class="badge badge-secondary badge-outline mb-4 p-3 font-bold">Autônomo & Freelancer desde 2020</div>
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                    Desenvolvedor Backend <br> 
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">Python & RPA</span>
+                    Isack Vitor Rosario Neto<br> 
+                    <span class="text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600 block mt-2">Full Cycle Developer & RPA</span>
                 </h1>
-                <p class="py-6 text-lg md:text-xl text-slate-300 mb-6">
-                    Especialista em construir APIs robustas (FastAPI/Flask), automações inteligentes e Web Scraping. 
-                    Transformo processos complexos em código eficiente e escalável.
+                <p class="py-6 text-lg md:text-xl text-slate-300 mb-6 max-w-3xl mx-auto">
+                    Especialista em Backend Python, Integrações Financeiras e Automação com Pyrogram e Playwright. 
+                    Atuo desde o código até a infraestrutura, entregando soluções escaláveis e seguras.
                 </p>
                 <div class="flex justify-center gap-4">
-                    <a href="#projetos" class="btn btn-secondary border-none hover:bg-sky-600 text-white px-8 shadow-lg shadow-sky-500/30">Ver Projetos</a>
+                    <a href="#projetos" class="btn btn-secondary border-none hover:bg-sky-600 text-white px-8 shadow-lg shadow-sky-500/30">Ver Soluções</a>
                     <a href="https://github.com/Isaac-Foster" target="_blank" class="btn btn-outline text-white hover:bg-white hover:text-slate-900 px-8"><i class="fa-brands fa-github mr-2"></i> GitHub</a>
                 </div>
             </div>
@@ -86,109 +83,85 @@
             <div class="relative">
                 <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-sky-400 rounded-lg blur opacity-30"></div>
                 <div class="relative bg-white p-8 rounded-lg shadow-xl border border-slate-100">
-                    <h3 class="text-2xl font-bold mb-4 text-primary">Minha Jornada</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed">
-                        Meu contato com tecnologia começou em 2016, mas foi em 2019 que a paixão por Python se consolidou. 
-                        Comecei como autodidata, criando bots para Telegram e explorando automações.
+                    <h3 class="text-2xl font-bold mb-4 text-primary">Minha História</h3>
+                    <p class="text-slate-600 mb-4 leading-relaxed text-justify">
+                        Desde 2016, quando tive meu primeiro contato com desenvolvimento web, descobri minha paixão por tecnologia. Em 2019, aprofundei meus estudos, focando principalmente em Python e suas aplicações. Desde então, venho adquirindo experiência em desenvolvimento backend, automação de processos (RPA), web scraping, web crawling e integração de APIs.
                     </p>
-                    <p class="text-slate-600 leading-relaxed">
-                        Hoje, sou estudante de <strong>Ciência da Computação</strong> e atuo profissionalmente desenvolvendo soluções que integram sistemas legados, 
-                        processam pagamentos e coletam dados massivos via Web Scraping. Foco em resolver problemas reais com código limpo.
+                    <p class="text-slate-600 mb-4 leading-relaxed text-justify">
+                        Atualmente, curso Ciência da Computação na Estácio e continuo aprimorando minhas habilidades. Acredito que minha experiência prática, aliada à minha paixão por resolver problemas, pode agregar valor à equipe e contribuir para os desafios da empresa. Estou sempre em busca de novas tecnologias e desafios que me permitam evoluir como desenvolvedor.
                     </p>
                 </div>
             </div>
             <div>
-                <h2 class="text-4xl font-bold text-primary mb-6">Tech & Soluções</h2>
-                <div class="space-y-4">
-                    <div class="flex items-start gap-4">
-                        <div class="p-3 bg-blue-100 text-blue-600 rounded-lg"><i class="fa-solid fa-robot text-xl"></i></div>
-                        <div>
-                            <h4 class="font-bold text-lg">Automação (RPA)</h4>
-                            <p class="text-sm text-slate-500">Criação de robôs para tarefas repetitivas, reduzindo custos e erros operacionais.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="p-3 bg-blue-100 text-blue-600 rounded-lg"><i class="fa-solid fa-server text-xl"></i></div>
-                        <div>
-                            <h4 class="font-bold text-lg">Backend Robusto</h4>
-                            <p class="text-sm text-slate-500">APIs de alta performance com FastAPI, Celery para filas e Redis para cache.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="p-3 bg-blue-100 text-blue-600 rounded-lg"><i class="fa-solid fa-spider text-xl"></i></div>
-                        <div>
-                            <h4 class="font-bold text-lg">Web Scraping</h4>
-                            <p class="text-sm text-slate-500">Extração de dados complexos utilizando Selenium, BeautifulSoup e Requests.</p>
-                        </div>
-                    </div>
+                <h2 class="text-3xl font-bold text-primary mb-6">Integrações & Tech</h2>
+                <p class="text-slate-600 mb-6">
+                    Trabalhei em diversos projetos que envolveram o desenvolvimento e consumo de APIs utilizando Flask e FastAPI, com foco especial em gateways de pagamento e bibliotecas robustas como <strong>Pyrogram (MTProto)</strong>.
+                </p>
+                
+                <div class="flex flex-wrap gap-3">
+                    <span class="badge badge-lg p-4 bg-blue-50 text-blue-800 border-blue-200"><i class="fa-brands fa-telegram mr-2"></i> Pyrogram (MTProto)</span>
+                    <span class="badge badge-lg p-4 bg-orange-50 text-orange-800 border-orange-200"><i class="fa-solid fa-robot mr-2"></i> Playwright</span>
+                    <span class="badge badge-lg p-4 bg-green-100 text-green-800 border-green-200"><i class="fa-solid fa-check mr-2"></i> PagSeguro</span>
+                    <span class="badge badge-lg p-4 bg-orange-100 text-orange-800 border-orange-200"><i class="fa-solid fa-check mr-2"></i> GerenciaNet (EFI)</span>
+                    <span class="badge badge-lg p-4 bg-blue-100 text-blue-800 border-blue-200"><i class="fa-solid fa-check mr-2"></i> Mercado Pago</span>
+                    <span class="badge badge-lg p-4 bg-purple-100 text-purple-800 border-purple-200"><i class="fa-solid fa-check mr-2"></i> Asaas</span>
+                    <span class="badge badge-lg p-4 bg-yellow-100 text-yellow-800 border-yellow-200"><i class="fa-brands fa-bitcoin mr-2"></i> Coinbase</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-20 bg-slate-100">
+    <section id="infra" class="py-20 bg-slate-900 text-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-primary mb-12">Stack Tecnológico</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card bg-white shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-secondary">
+            <h2 class="text-3xl font-bold text-center mb-12">Infraestrutura & Automação</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <div class="card bg-slate-800 shadow-xl border border-slate-700">
                     <div class="card-body">
-                        <h3 class="card-title text-primary"><i class="fa-brands fa-python text-3xl mr-2"></i> Core & Backend</h3>
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span class="badge badge-outline p-3">Python 3</span>
-                            <span class="badge badge-outline p-3">FastAPI</span>
-                            <span class="badge badge-outline p-3">Flask</span>
-                            <span class="badge badge-outline p-3">Django</span>
-                            <span class="badge badge-outline p-3">Node.js</span>
-                        </div>
+                        <h3 class="card-title text-secondary text-2xl mb-4"><i class="fa-solid fa-server mr-2"></i> DevOps & Infra</h3>
+                        <p class="text-slate-300 leading-relaxed mb-4">
+                            Atuo desde a configuração da infraestrutura até o deploy completo da aplicação. Crio e configuro VPS em provedores como <strong>Oracle e Azure</strong>, preparo o ambiente com instalação e configuração de serviços como MySQL, PostgreSQL, Redis ou MongoDB utilizando <strong>Docker</strong>.
+                        </p>
+                        <p class="text-slate-300 leading-relaxed">
+                            Configuro servidores web com <strong>Nginx</strong> (Reverse Proxy) e gerencio segurança ativa: configuração de Firewalls, abertura restrita de portas e implementação de <strong>Fail2Ban</strong> para proteção contra força bruta.
+                        </p>
                     </div>
                 </div>
 
-                <div class="card bg-white shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-blue-800">
+                <div class="card bg-slate-800 shadow-xl border border-slate-700">
                     <div class="card-body">
-                        <h3 class="card-title text-primary"><i class="fa-solid fa-database text-3xl mr-2"></i> Dados & Infra</h3>
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span class="badge badge-outline p-3">PostgreSQL</span>
-                            <span class="badge badge-outline p-3">MySQL</span>
-                            <span class="badge badge-outline p-3">MongoDB</span>
-                            <span class="badge badge-outline p-3">Redis</span>
-                            <span class="badge badge-outline p-3">Docker</span>
-                            <span class="badge badge-outline p-3">AWS/Oracle Cloud</span>
-                        </div>
+                        <h3 class="card-title text-secondary text-2xl mb-4"><i class="fa-solid fa-robot mr-2"></i> RPA Avançado</h3>
+                        <p class="text-slate-300 leading-relaxed mb-4">
+                            Desenvolvo RPA para automatizar tarefas manuais e repetitivas de alta complexidade.
+                        </p>
+                        <ul class="list-disc list-inside text-slate-300 space-y-2">
+                            <li><strong>Telegram:</strong> Automação via Pyrogram utilizando protocolo MTProto.</li>
+                            <li><strong>Scraping:</strong> Extração massiva de dados com Playwright e Selenium.</li>
+                            <li><strong>Formulários:</strong> Preenchimento automático de alta precisão.</li>
+                            <li><strong>Networking:</strong> Automação de conexões LinkedIn baseada em keywords.</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="card bg-white shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-sky-400">
-                    <div class="card-body">
-                        <h3 class="card-title text-primary"><i class="fa-solid fa-gears text-3xl mr-2"></i> RPA & Tools</h3>
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span class="badge badge-outline p-3">Selenium</span>
-                            <span class="badge badge-outline p-3">BeautifulSoup</span>
-                            <span class="badge badge-outline p-3">Celery</span>
-                            <span class="badge badge-outline p-3">Git/Github</span>
-                            <span class="badge badge-outline p-3">Zeep (SOAP)</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <section id="experiencia" class="py-20 container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-primary mb-12">Experiência Profissional</h2>
+        <h2 class="text-3xl font-bold text-center text-primary mb-12">Trajetória Profissional</h2>
         
         <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
             
             <li>
                 <div class="timeline-middle">
-                    <i class="fa-solid fa-circle-check text-secondary"></i>
+                    <i class="fa-solid fa-star text-yellow-500"></i>
                 </div>
                 <div class="timeline-start md:text-end mb-10">
-                    <time class="font-mono italic text-slate-500">Set 2025 - Atual</time>
-                    <div class="text-lg font-black text-primary">Clickpto</div>
-                    <div class="font-bold text-secondary">Analista de Sistema</div>
-                    <p class="text-sm text-slate-600 mt-2 max-w-md ml-auto">
-                        Atuação focada na análise e desenvolvimento de soluções sistêmicas, garantindo a integridade e evolução dos produtos da empresa.
+                    <time class="font-mono italic text-slate-500">2020 - Atualmente</time>
+                    <div class="text-lg font-black text-primary">Desenvolvedor Autônomo & Freelancer</div>
+                    <div class="font-bold text-secondary">Consultoria e Projetos Sob Medida</div>
+                    <p class="text-sm text-slate-600 mt-2 max-w-md ml-auto bg-yellow-50 p-3 rounded-lg border border-yellow-100">
+                        Paralelamente às experiências corporativas, atuo continuamente como freelancer full-cycle. Desenvolvo SaaS, bots e integrações complexas, gerenciando desde a negociação com o cliente até o deploy e manutenção da infraestrutura.
                     </p>
                 </div>
                 <hr class="bg-secondary"/>
@@ -197,15 +170,14 @@
             <li>
                 <hr class="bg-secondary"/>
                 <div class="timeline-middle">
-                    <i class="fa-solid fa-briefcase text-primary"></i>
+                    <i class="fa-solid fa-building text-primary"></i>
                 </div>
                 <div class="timeline-end mb-10">
-                    <time class="font-mono italic text-slate-500">Jul 2025 - Ago 2025</time>
-                    <div class="text-lg font-black text-primary">Crono Wise</div>
-                    <div class="font-bold text-secondary">Desenvolvedor Python</div>
+                    <time class="font-mono italic text-slate-500">Set 2025 - Atual</time>
+                    <div class="text-lg font-black text-primary">Clickpto</div>
+                    <div class="font-bold text-secondary">Analista de Sistema</div>
                     <p class="text-sm text-slate-600 mt-2 max-w-md">
-                        Criação de APIs para o setor de Corban. Integração com Banco BTG via <strong>SOAP/Zeep</strong>. 
-                        Otimização de performance com <strong>Asyncio</strong> e controle de filas com <strong>Celery e Redis</strong>.
+                        Análise e sustentação de sistemas, garantindo alta disponibilidade e integridade das aplicações.
                     </p>
                 </div>
                 <hr class="bg-primary"/>
@@ -217,52 +189,135 @@
                     <i class="fa-solid fa-code text-secondary"></i>
                 </div>
                 <div class="timeline-start md:text-end mb-10">
-                    <time class="font-mono italic text-slate-500">Out 2024 - Jul 2025</time>
-                    <div class="text-lg font-black text-primary">Rime Tecnologia</div>
-                    <div class="font-bold text-secondary">Desenvolvedor Full Cycle</div>
+                    <time class="font-mono italic text-slate-500">Jul 2025 - Ago 2025</time>
+                    <div class="text-lg font-black text-primary">Crono Wise</div>
+                    <div class="font-bold text-secondary">Desenvolvedor Python</div>
                     <p class="text-sm text-slate-600 mt-2 max-w-md ml-auto">
-                        Ciclo completo: do levantamento de requisitos ao deploy em VPS. Configuração de Firewalls, desenvolvimento de RPAs e Web Scraping.
+                        Foco em setor de Corban. Integração SOAP/Zeep com Banco BTG e arquitetura assíncrona com (Dramatiq/Celery)/Redis.
                     </p>
                 </div>
                 <hr />
             </li>
+
+            <li>
+                <hr/>
+                <div class="timeline-middle">
+                    <i class="fa-solid fa-laptop-code text-slate-400"></i>
+                </div>
+                <div class="timeline-end mb-10">
+                    <time class="font-mono italic text-slate-500">Out 2024 - Jul 2025</time>
+                    <div class="text-lg font-black text-primary">Rime Tecnologia</div>
+                    <div class="font-bold text-secondary">Desenvolvedor Full Cycle</div>
+                    <p class="text-sm text-slate-600 mt-2 max-w-md">
+                        Desenvolvimento de RPAs, Web Scraping e gestão completa de VPS Linux e Firewalls.
+                    </p>
+                </div>
+            </li>
         </ul>
     </section>
 
-    <section id="projetos" class="py-20 bg-slate-900 text-white">
+    <section id="projetos" class="py-20 bg-slate-100">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Projetos em Destaque</h2>
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Projetos Desenvolvidos</h2>
             
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="card md:card-side bg-slate-800 shadow-xl border border-slate-700 hover:border-secondary transition-all">
-                    <figure class="md:w-1/3 bg-slate-700 flex items-center justify-center min-h-[200px]">
-                        <i class="fa-solid fa-robot text-6xl text-slate-500"></i>
-                    </figure>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="card bg-white shadow-lg border-t-4 border-pink-500 hover:shadow-2xl transition-all">
                     <div class="card-body">
-                        <h2 class="card-title text-secondary">Megan Bot</h2>
-                        <p class="text-slate-300">Bot bibliotecária para auxiliar novos escritores indie. Automatiza organização e catalogação de conteúdos.</p>
+                        <div class="flex justify-between items-start">
+                            <h2 class="card-title text-primary">Megan Bot</h2>
+                            <i class="fa-solid fa-book text-3xl text-pink-400"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">
+                            Bot "bibliotecária" para escritores independentes. Automatiza a organização, catalogação e distribuição de conteúdo literário.
+                        </p>
                         <div class="card-actions justify-end mt-4">
-                            <div class="badge badge-outline text-white">Python</div>
-                            <div class="badge badge-outline text-white">Telegram API</div>
-                            <a href="https://github.com/Isaac-Foster" class="btn btn-sm btn-primary ml-2">Ver Code</a>
+                            <div class="badge badge-outline text-xs font-bold">Pyrogram</div>
+                            <div class="badge badge-outline text-xs">MTProto</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card md:card-side bg-slate-800 shadow-xl border border-slate-700 hover:border-secondary transition-all">
-                    <figure class="md:w-1/3 bg-slate-700 flex items-center justify-center min-h-[200px]">
-                        <i class="fa-solid fa-search-dollar text-6xl text-slate-500"></i>
-                    </figure>
+                 <div class="card bg-white shadow-lg border-t-4 border-blue-700 hover:shadow-2xl transition-all">
                     <div class="card-body">
-                        <h2 class="card-title text-secondary">99Freelas Scraper</h2>
-                        <p class="text-slate-300">Coleta oportunidades de trabalho baseadas em tecnologias específicas e notifica via Telegram em tempo real.</p>
+                        <div class="flex justify-between items-start">
+                            <h2 class="card-title text-primary">LinkedIn Connector</h2>
+                            <i class="fa-brands fa-linkedin text-3xl text-blue-600"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">
+                            Automação de Networking que acessa a conta, realiza buscas por palavras-chave estratégicas e gera conexões automaticamente.
+                        </p>
                         <div class="card-actions justify-end mt-4">
-                            <div class="badge badge-outline text-white">Scraping</div>
-                            <div class="badge badge-outline text-white">API</div>
-                            <a href="https://github.com/Isaac-Foster" class="btn btn-sm btn-primary ml-2">Ver Code</a>
+                            <div class="badge badge-outline text-xs font-bold">Playwright</div>
+                            <div class="badge badge-outline text-xs">Automação</div>
                         </div>
                     </div>
                 </div>
+
+                <div class="card bg-white shadow-lg border-t-4 border-cyan-500 hover:shadow-2xl transition-all">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <h2 class="card-title text-primary">99Freelas Scraper</h2>
+                            <i class="fa-solid fa-briefcase text-3xl text-cyan-500"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">
+                            Monitoramento em tempo real de vagas de freela baseadas em stack tecnológica, com notificação instantânea no Telegram.
+                        </p>
+                        <div class="card-actions justify-end mt-4">
+                            <div class="badge badge-outline text-xs font-bold">Playwright</div>
+                            <div class="badge badge-outline text-xs">Scraping</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-white shadow-lg border-t-4 border-blue-600 hover:shadow-2xl transition-all">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <h2 class="card-title text-primary">Gestão Hotmart</h2>
+                            <i class="fa-brands fa-telegram text-3xl text-blue-500"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">
+                            Gestão de grupos VIP. Integração via Webhooks com Hotmart para adicionar/remover alunos e limpar usuários expirados automaticamente.
+                        </p>
+                        <div class="card-actions justify-end mt-4">
+                            <div class="badge badge-outline text-xs font-bold">Pyrogram</div>
+                            <div class="badge badge-outline text-xs">MTProto</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-white shadow-lg border-t-4 border-red-600 hover:shadow-2xl transition-all">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <h2 class="card-title text-primary">RPA Visto Americano</h2>
+                            <i class="fa-solid fa-passport text-3xl text-red-500"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">
+                            Automação crítica para preenchimento de formulários consulares. Consome dados de front-end e interage com o site da embaixada.
+                        </p>
+                        <div class="card-actions justify-end mt-4">
+                            <div class="badge badge-outline text-xs font-bold">Playwright</div>
+                            <div class="badge badge-outline text-xs">Selenium</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-white shadow-lg border-t-4 border-purple-600 hover:shadow-2xl transition-all">
+                    <div class="card-body">
+                        <div class="flex justify-between items-start">
+                            <h2 class="card-title text-primary">Line SMS (SaaS)</h2>
+                            <i class="fa-solid fa-comments text-3xl text-purple-500"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">
+                            Pioneirismo (2020-2021): Criação de um serviço SaaS completo para automação de SMS e Bots antes do boom do mercado.
+                        </p>
+                        <div class="card-actions justify-end mt-4">
+                            <div class="badge badge-outline text-xs">SaaS</div>
+                            <div class="badge badge-outline text-xs">Fullstack</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -270,7 +325,7 @@
     <footer class="footer footer-center p-10 bg-primary text-primary-content rounded">
         <nav class="grid grid-flow-col gap-4">
             <a href="#sobre" class="link link-hover">Sobre</a>
-            <a href="#skills" class="link link-hover">Skills</a>
+            <a href="#infra" class="link link-hover">Infra</a>
             <a href="#experiencia" class="link link-hover">Experiência</a>
         </nav> 
         <nav>
@@ -282,7 +337,7 @@
         </nav> 
         <aside>
             <p>Copyright © 2025 - Isack Vitor Rosario Neto</p>
-            <p class="text-xs text-slate-500">Desenvolvido com TailwindCSS & DaisyUI</p>
+            <p class="text-xs text-slate-500">GitHub Handle: @Isaac-Foster</p>
         </aside>
     </footer>
 
