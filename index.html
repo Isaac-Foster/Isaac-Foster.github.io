@@ -110,7 +110,8 @@
             </a>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#454039]">
                 <a href="#sobre" class="hover:text-[#9a3412] transition-colors">Sobre</a>
-                <a href="#infra" class="hover:text-[#9a3412] transition-colors">Infra &amp; RPA</a>
+                <a href="#skills" class="hover:text-[#9a3412] transition-colors">Skills</a>
+                <a href="#infra" class="hover:text-[#9a3412] transition-colors">Operação</a>
                 <a href="#experiencia" class="hover:text-[#9a3412] transition-colors">Experiência</a>
                 <a href="#projetos" class="hover:text-[#9a3412] transition-colors">Projetos</a>
             </nav>
@@ -126,22 +127,16 @@
         <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" aria-hidden="true"></div>
 
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-24">
-            <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-center md:items-start">
-                <div class="order-1 md:order-2 shrink-0">
-                    <div class="relative">
-                        <div class="absolute -inset-1 rounded-2xl bg-gradient-to-br from-[#c2410c]/50 to-transparent opacity-70 blur-md" aria-hidden="true"></div>
-                        <img src="assets/avatar.png" alt="Retrato de Isack Vitor Rosário Neto — mesma imagem usada em perfis profissionais." width="504" height="665" class="relative w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-2xl object-cover object-top ring-2 ring-[#c2410c]/60 ring-offset-4 ring-offset-[#090807] shadow-xl" fetchpriority="high" decoding="async">
-                    </div>
-                </div>
-                <div class="order-2 md:order-1 flex-1 min-w-0 w-full md:pl-10 md:border-l-[3px] border-[#ea580c]/80">
+            <div class="flex flex-col gap-10 md:gap-12 items-start">
+                <div class="flex-1 min-w-0 w-full md:pl-10 md:border-l-[3px] border-[#ea580c]/80">
                     <div class="w-10 h-1 rounded-full bg-gradient-to-r from-[#c2410c] to-[#ea580c] mb-4" aria-hidden="true"></div>
                     <p class="text-sm text-[#b8a99a] mb-1 tracking-wide">Python há uns bons anos · autônomo desde 2020</p>
                     <p class="font-mono text-[11px] sm:text-xs text-[#fb923c]/95 tracking-[0.18em] uppercase mb-4">Full cycle · Python · APIs · Infra</p>
                     <h1 class="font-display font-bold text-[2.1rem] sm:text-5xl md:text-[3.1rem] leading-[1.08] tracking-tight text-[#f7f1ea]">
-                        Isack Vitor Rosário Neto
+                        Isack Vitor Rosario Neto
                     </h1>
                     <p class="mt-5 text-lg md:text-xl text-[#d4cbc2] font-normal italic max-w-2xl leading-snug border-l-2 border-[#c2410c]/40 pl-4 -ml-1 md:ml-0">
-                        Backend, integrações fechadas (Pix, bancos, OTC), automação e a parte chata de botar em produção: servidor, deploy, firewall.
+                        Backend com foco em integração e entrega: APIs, pagamentos, mensageria, dados e operação em produção quando necessário.
                     </p>
                     <p class="mt-6 text-[#c9bfb5] text-base md:text-lg max-w-2xl leading-relaxed">
                         Eu costumo ir do que o cliente precisa até o binário rodando: requisito, modelo, API, fila quando precisa, e infra quando não tem ninguém pra fazer.
@@ -161,64 +156,69 @@
     <section id="sobre" class="py-20 md:py-28 bg-[#0c0a09] text-[#cfc8bf] border-t border-[#c2410c]/30">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <p class="section-kicker mb-1 text-[#fb923c]">01 — Sobre</p>
-            <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-white mb-12">História e o que eu mexo</h2>
+            <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-white mb-12">História profissional</h2>
+            <div class="max-w-3xl space-y-6 leading-relaxed">
+                <p>
+                    Atuo com desenvolvimento desde 2016 e com foco em Python desde 2019. Ao longo desse período, consolidei experiência em backend para produtos e operações que dependem de integração com terceiros, regras de negócio e confiabilidade em produção.
+                </p>
+                <p>
+                    Minha atuação costuma cobrir o ciclo completo de entrega: entendimento do problema, desenho da solução, implementação da API e dos fluxos assíncronos, observabilidade, testes e publicação em ambiente produtivo. O objetivo é manter previsibilidade técnica e reduzir fricção para o usuário final.
+                </p>
+                <p>
+                    Sou graduando em Ciência da Computação (Estácio, 2024-2028) e trabalho com práticas de engenharia como versionamento por fluxo, revisão de código, qualidade automatizada e documentação operacional.
+                </p>
+            </div>
+        </div>
+    </section>
 
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
-                <article class="space-y-6 leading-relaxed text-left">
-                    <h3 class="font-display font-bold text-xl text-white text-left">Minha história</h3>
-                    <p>
-                        Desde 2016 no desenvolvimento web e com foco em Python desde 2019, acumulei <strong class="text-[#ffedd5]">mais de 6 anos de experiência prática</strong> atuando <strong class="text-[#ffedd5]">full cycle</strong>: backend, RPA, scraping, crawling e APIs — da conversa com o cliente e priorização até produção, com CI/CD e hardening de infraestrutura quando o projeto exige.
-                    </p>
-                    <p>
-                        Bacharel em Ciência da Computação (Estácio, início em out/2024, conclusão prevista out/2028). No dia a dia, aplico <strong class="text-[#ffedd5]">Clean Architecture</strong>, GitFlow, testes com Pytest, code review e padronização com pre-commit e Ruff.
+    <section id="skills" class="py-20 md:py-24 bg-[#12100e] text-[#d6d3d1] border-y border-orange-500/20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <p class="section-kicker mb-1 text-[#fdba74]">02 — Skills</p>
+            <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight mb-4 text-white">Backend e forma de atuação</h2>
+            <p class="text-[#a8a29e] max-w-3xl mb-12 text-base md:text-lg leading-relaxed">
+                O foco principal é backend orientado a problema: transformar regra de negócio em fluxo confiável, com boa comunicação entre serviços e operação estável.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <article class="rounded-2xl border border-white/10 bg-white/[0.04] p-8">
+                    <h3 class="font-display font-bold text-xl text-white mb-4">Arquitetura e integração</h3>
+                    <p class="leading-relaxed text-[#d6d3d1]">
+                        Implementação de APIs e workers para integrações financeiras, gateways de pagamento, serviços legados e mensageria. Quando necessário, desenho filas para desacoplamento, idempotência e recuperação de falhas, mantendo o comportamento previsível mesmo em alto volume.
                     </p>
                 </article>
-                <div class="rounded-xl border border-orange-500/25 bg-black/25 p-6 md:p-8">
-                    <h3 class="font-display font-bold text-xl text-white mb-4">Integrações &amp; tech</h3>
-                    <p class="text-[#b8b0a8] mb-6 leading-relaxed">
-                        APIs com <strong class="text-[#ffedd5]">FastAPI</strong> e <strong class="text-[#ffedd5]">Flask</strong>, integrações bancárias e de pagamento, <strong class="text-[#ffedd5]">SOAP/Zeep</strong> quando o legado exige, além de automações com <strong class="text-[#ffedd5]">Pyrogram (MTProto)</strong>, Playwright e Selenium.
+                <article class="rounded-2xl border border-white/10 bg-white/[0.04] p-8">
+                    <h3 class="font-display font-bold text-xl text-white mb-4">Confiabilidade e qualidade</h3>
+                    <p class="leading-relaxed text-[#d6d3d1]">
+                        Experiência prática com CI/CD, publicação contínua, monitoramento e segurança básica de aplicação/servidor. Familiaridade com testes unitários, end-to-end e de integração para cobrir fluxos críticos e reduzir regressão em evolução de produto.
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="chip-dev inline-flex items-center gap-1.5 rounded-sm px-2.5 py-1.5 text-sm"><i class="fa-solid fa-money-bill-transfer text-emerald-400"></i> Pix &amp; split</span>
-                        <span class="chip-dev inline-flex items-center gap-1.5 rounded-sm px-2.5 py-1.5 text-sm"><i class="fa-brands fa-telegram text-sky-400"></i> Pyrogram</span>
-                        <span class="chip-dev inline-flex items-center gap-1.5 rounded-sm px-2.5 py-1.5 text-sm"><i class="fa-solid fa-robot text-orange-300"></i> Playwright</span>
-                        <span class="chip-dev rounded-sm px-2.5 py-1.5 text-sm">Mercado Pago</span>
-                        <span class="chip-dev rounded-sm px-2.5 py-1.5 text-sm">PagSeguro</span>
-                        <span class="chip-dev rounded-sm px-2.5 py-1.5 text-sm">Efi / Juno</span>
-                        <span class="chip-dev rounded-sm px-2.5 py-1.5 text-sm">Asaas · OpenPix</span>
-                        <span class="chip-dev rounded-sm px-2.5 py-1.5 text-sm">Coinbase · Coinext</span>
-                        <span class="chip-dev rounded-sm px-2.5 py-1.5 text-sm">CorpXBank · E2Bank</span>
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <section id="infra" class="py-20 md:py-28 bg-[#141210] text-[#e7e5e4] border-y border-orange-500/20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <p class="section-kicker mb-1 text-[#fdba74]">02 — Infra</p>
-            <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight mb-4 text-white">Servidor, deploy e automação</h2>
-            <p class="text-[#a8a29e] max-w-2xl mb-14 text-base md:text-lg leading-relaxed">Quando o projeto não tem time de infra separado, eu mesmo subo VPS, nginx, docker e o que mais fizer falta.</p>
+            <p class="section-kicker mb-1 text-[#fdba74]">03 — Operação</p>
+            <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight mb-4 text-white">Entrega em produção sem depender de estrutura perfeita</h2>
+            <p class="text-[#a8a29e] max-w-3xl mb-14 text-base md:text-lg leading-relaxed">DevOps, CI/CD, filas e infraestrutura entram como meios para resolver problema de negócio com estabilidade, e não como fim em si.</p>
 
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-8 hover:border-[#fb923c]/30 transition-colors">
-                    <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-server text-[#fb923c]" aria-hidden="true"></i> DevOps &amp; infra</h3>
+                    <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-server text-[#fb923c]" aria-hidden="true"></i> Plataforma de execução</h3>
                     <p class="text-[#d6d3d1] leading-relaxed mb-4">
-                        Da VPS ao deploy: <strong class="text-white">Oracle Cloud</strong>, <strong class="text-white">Azure</strong> e AWS (S3, ECR), serviços com <strong class="text-white">Docker</strong> / Compose e bancos MySQL, PostgreSQL, Redis ou MongoDB. Orquestração com <strong class="text-white">GitHub Actions</strong>, registry na AWS e <strong class="text-white">Coolify</strong> self-hosted quando faz sentido para o time.
+                        Estruturo ambientes para manter entrega contínua e operação previsível: build, deploy, rollback, gestão de segredos e versionamento de serviços. Quando o contexto pede, assumo também configuração de servidor, proxy reverso e proteção básica de borda.
                     </p>
                     <p class="text-[#d6d3d1] leading-relaxed">
-                        <strong class="text-white">Nginx</strong> como reverse proxy, <strong class="text-white">UFW</strong> e <strong class="text-white">Fail2Ban</strong>. Segurança em aplicação com JWT, TOTP, bcrypt e controle de acesso em camadas quando o domínio exige.
+                        O resultado esperado é reduzir tempo de resposta para incidentes, manter serviços disponíveis e preservar segurança operacional sem travar evolução de produto.
                     </p>
                 </div>
                 <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-8 hover:border-[#fb923c]/30 transition-colors">
-                    <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-robot text-[#fb923c]" aria-hidden="true"></i> RPA</h3>
-                    <p class="text-[#d6d3d1] leading-relaxed mb-4">Automação de tarefas manuais e repetitivas de alta complexidade.</p>
-                    <ul class="space-y-2 text-[#d6d3d1] text-sm leading-relaxed border-l-2 border-[#fb923c]/40 pl-4">
-                        <li><strong class="text-white">Telegram:</strong> bots e fluxos com Pyrogram (MTProto).</li>
-                        <li><strong class="text-white">Web:</strong> Playwright e Selenium; desktop/OCR com PyAutoGUI e Tesseract.</li>
-                        <li><strong class="text-white">Formulários:</strong> alta precisão (ex.: processos consulares).</li>
-                        <li><strong class="text-white">Networking:</strong> LinkedIn por palavras-chave.</li>
-                    </ul>
+                    <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-gears text-[#fb923c]" aria-hidden="true"></i> Operação orientada a fluxo</h3>
+                    <p class="text-[#d6d3d1] leading-relaxed mb-4">
+                        Além da API, trabalho em fluxo completo: ingestão de dados, processamento assíncrono, reprocessamento e integração com canais externos quando necessário.
+                    </p>
+                    <p class="text-[#d6d3d1] text-sm leading-relaxed border-l-2 border-[#fb923c]/40 pl-4">
+                        Isso inclui automações e conectores como parte da arquitetura de backend, sempre com foco em rastreabilidade, previsibilidade e experiência final do usuário.
+                    </p>
                 </div>
             </div>
         </div>
@@ -226,7 +226,7 @@
 
     <section id="experiencia" class="py-20 md:py-28 bg-[#12100e] text-[#cfc8bf] border-t border-[#c2410c]/25">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <p class="section-kicker mb-1 text-[#fb923c]">03 — Trabalho</p>
+            <p class="section-kicker mb-1 text-[#fb923c]">04 — Trabalho</p>
             <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-white mb-14">Por onde passei</h2>
 
             <div class="relative pl-8 md:pl-10 space-y-12 md:space-y-14 [&_strong]:text-[#fed7aa]">
@@ -274,9 +274,9 @@
 
     <section id="projetos" class="py-20 md:py-28 bg-[#cfc3b2] border-t border-[#1c1814]/15">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <p class="section-kicker mb-1">04 — Coisas que fiz</p>
+            <p class="section-kicker mb-1">05 — Projetos com acesso público</p>
             <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-[#1c1814] mb-4">Projetos</h2>
-            <p class="text-[#454039] mb-12 max-w-xl text-base leading-relaxed">Coisa que roda em produção ou rodou por um tempo — não é mock de portfólio.</p>
+            <p class="text-[#454039] mb-12 max-w-2xl text-base leading-relaxed">Seleção de projetos que podem ser acessados, testados ou auditados por link público (repositório, bot ou demonstração aberta).</p>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-5">
                 <article class="lg:col-span-7 rounded-lg border border-[#1c1814]/18 bg-[#e5ddd1] p-6 md:p-8 flex flex-col ring-1 ring-[#1c1814]/5">
@@ -301,103 +301,28 @@
                     </div>
                 </article>
 
-                <article class="lg:col-span-5 rounded-lg border border-[#1c1814]/25 bg-[#1c1814] text-[#e7e5e4] p-6 md:p-8 flex flex-col justify-between">
-                    <div>
-                        <h3 class="font-display font-bold text-xl text-white">Split Pix</h3>
-                        <p class="mt-3 text-sm text-[#a8a29e] leading-relaxed">
-                            Split bancário automático para contornar o limite de R$15 mil por IP do Banco Central, até <strong class="text-white">R$1 milhão</strong> em pagamentos paralelos em background.
-                        </p>
-                    </div>
-                    <div class="mt-6 flex gap-2">
-                        <span class="tag text-[#fb923c]">Pix</span>
-                        <span class="tag text-[#a8a29e]">Backend</span>
-                    </div>
-                </article>
-
-                <article class="lg:col-span-12 rounded-lg border border-orange-500/25 bg-[#1a1815] p-6 md:p-8 ring-1 ring-black/40">
-                    <div class="flex flex-col lg:flex-row gap-8 items-start">
-                        <div class="w-full max-w-xl mx-auto lg:mx-0 shrink-0 rounded-md border border-orange-500/20 overflow-hidden shadow-lg bg-black/40">
-                            <img src="assets/wall-importacao-telegram.png" alt="Mosaico com cards de depoimentos estruturados (nome, turma, ROI, investimento) e prints de alunos no Telegram." class="w-full h-auto object-cover" loading="lazy">
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <span class="text-xs font-medium text-[#fb923c]/90">Formulário · Bot Telegram · Hotmart API · Sheets</span>
-                            <h3 class="font-display font-bold text-2xl md:text-3xl mt-2 text-white">Wall de resultados (Telegram)</h3>
-                            <p class="mt-4 text-[#b8b0a8] leading-relaxed text-sm md:text-base">
-                                Pipeline para uma operação de infoproduto: o participante preenche um <strong class="text-[#ffedd5]">formulário</strong> com o resultado (nome, turma, modalidade, prazo, investimento, ROI, etc.) e o <strong class="text-[#ffedd5]">bot publica no grupo no Telegram</strong> no template “importação chegando”. Os posts alimentam uma <strong class="text-[#ffedd5]">vitrine pública de resultados</strong> (mosaico com fotos e prints) — prova social centralizada e legível.
-                            </p>
-                            <div class="mt-5 flex flex-wrap gap-2">
-                                <span class="text-xs font-mono rounded-sm bg-[#c2410c]/30 text-[#ffedd5] border border-orange-400/30 px-2 py-1">Telegram</span>
-                                <span class="chip-dev text-xs font-mono px-2 py-1 rounded-sm">Formulário</span>
-                                <span class="chip-dev text-xs font-mono px-2 py-1 rounded-sm">Hotmart API</span>
-                                <span class="chip-dev text-xs font-mono px-2 py-1 rounded-sm">Google Sheets</span>
-                            </div>
-                            <div class="mt-6 flex flex-wrap gap-2">
-                                <a href="https://www.linkedin.com/posts/isack-foster_bom-j%C3%A1-tem-anos-que-programo-em-python-n%C3%A3o-activity-7202315179588489216-6oIf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-md border border-orange-500/35 bg-[#c2410c] px-4 py-2 text-sm font-semibold text-white hover:bg-[#9a3412] transition-colors"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> Post no LinkedIn</a>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="lg:col-span-4 rounded-lg border border-[#1c1814]/15 bg-[#dccfbe] p-5 hover:border-[#9a3412]/35 transition-colors">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-display font-bold text-lg text-[#1c1814]">Megan Bot</h3>
-                        <i class="fa-solid fa-book text-pink-500" aria-hidden="true"></i>
-                    </div>
-                    <p class="mt-2 text-sm text-[#57534e] leading-relaxed">Bot bibliotecário para escritores indie via Telegram.</p>
-                    <p class="mt-3 font-mono text-[10px] text-[#78716c]">Pyrogram · MTProto</p>
-                </article>
-
-                <article class="lg:col-span-4 rounded-lg border border-[#1c1814]/15 bg-[#e5ddd1] p-5 hover:border-[#9a3412]/35 transition-colors">
+                <article class="lg:col-span-5 rounded-lg border border-[#1c1814]/15 bg-[#e5ddd1] p-5 hover:border-[#9a3412]/35 transition-colors">
                     <div class="flex justify-between items-start">
                         <h3 class="font-display font-bold text-lg text-[#1c1814]">LinkedIn Connector</h3>
                         <i class="fa-brands fa-linkedin text-blue-600" aria-hidden="true"></i>
                     </div>
-                    <p class="mt-2 text-sm text-[#57534e] leading-relaxed">Networking automatizado por palavras-chave.</p>
-                    <p class="mt-3 font-mono text-[10px] text-[#78716c]">Playwright</p>
+                    <p class="mt-2 text-sm text-[#57534e] leading-relaxed">Automação de conexões e rotinas de networking no LinkedIn, com módulo opcional de coleta de vagas para distribuição em canais externos.</p>
+                    <div class="mt-5 flex flex-wrap gap-2">
+                        <a href="https://github.com/Isaac-Foster/linkedin_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-md bg-[#9a3412] px-4 py-2 text-sm font-semibold text-[#f7f1ea] hover:bg-[#7c2d12] transition-colors">Repositório</a>
+                    </div>
                 </article>
 
-                <article class="lg:col-span-4 rounded-lg border border-[#1c1814]/15 bg-[#dccfbe] p-5 hover:border-[#9a3412]/35 transition-colors flex flex-col">
+                <article class="lg:col-span-5 rounded-lg border border-[#1c1814]/15 bg-[#dccfbe] p-5 hover:border-[#9a3412]/35 transition-colors flex flex-col">
                     <div class="flex justify-between items-start">
                         <h3 class="font-display font-bold text-lg text-[#1c1814]">99Freelas</h3>
                         <i class="fa-solid fa-briefcase text-cyan-700 shrink-0" aria-hidden="true"></i>
                     </div>
-                    <p class="mt-2 text-sm text-[#57534e] leading-relaxed flex-1">Alertas por stack no Telegram via API.</p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="text-xs font-mono rounded-sm bg-[#1c1814] text-[#ece6dc] px-2 py-1">Playwright</span>
-                        <span class="chip text-xs font-mono px-2 py-1 rounded-sm">Scraping</span>
-                    </div>
+                    <p class="mt-2 text-sm text-[#57534e] leading-relaxed flex-1">Bot de notificação de novas oportunidades em plataforma freelancer, com filtro inicial e entrega contínua no Telegram.</p>
                     <div class="mt-5 flex flex-wrap gap-2">
                         <a href="https://t.me/nnfreelas" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-md bg-[#9a3412] px-4 py-2 text-sm font-semibold text-[#f7f1ea] hover:bg-[#7c2d12] transition-colors">Telegram</a>
-                        <a href="https://github.com/Isaac-Foster" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-md border border-[#1c1814]/20 bg-[#ddd4c4] px-4 py-2 text-sm font-medium text-[#1c1814] hover:bg-[#d0c6b6] transition-colors">GitHub</a>
+                        <a href="https://github.com/m3coder/99freelas_notifications_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-md border border-[#1c1814]/20 bg-[#ddd4c4] px-4 py-2 text-sm font-medium text-[#1c1814] hover:bg-[#d0c6b6] transition-colors">Repositório</a>
                     </div>
                     <p class="mt-2 font-mono text-[10px] text-[#5c4d3f]">Bot @nnfreelas</p>
-                </article>
-
-                <article class="lg:col-span-4 rounded-lg border border-[#1c1814]/15 bg-[#e5ddd1] p-5 hover:border-[#9a3412]/35 transition-colors">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-display font-bold text-lg text-[#1c1814]">Gestão Hotmart</h3>
-                        <i class="fa-brands fa-telegram text-sky-500" aria-hidden="true"></i>
-                    </div>
-                    <p class="mt-2 text-sm text-[#57534e] leading-relaxed">Grupos VIP, webhooks Hotmart, expiração automática.</p>
-                    <p class="mt-3 font-mono text-[10px] text-[#78716c]">Pyrogram</p>
-                </article>
-
-                <article class="lg:col-span-4 rounded-lg border border-[#1c1814]/15 bg-[#dccfbe] p-5 hover:border-[#9a3412]/35 transition-colors">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-display font-bold text-lg text-[#1c1814]">RPA Visto</h3>
-                        <i class="fa-solid fa-passport text-red-500" aria-hidden="true"></i>
-                    </div>
-                    <p class="mt-2 text-sm text-[#57534e] leading-relaxed">Formulários consulares com precisão.</p>
-                    <p class="mt-3 font-mono text-[10px] text-[#78716c]">Playwright · Selenium</p>
-                </article>
-
-                <article class="lg:col-span-4 rounded-lg border border-[#1c1814]/15 bg-[#e5ddd1] p-5 hover:border-[#9a3412]/35 transition-colors">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-display font-bold text-lg text-[#1c1814]">Line SMS</h3>
-                        <i class="fa-solid fa-comments text-purple-500" aria-hidden="true"></i>
-                    </div>
-                    <p class="mt-2 text-sm text-[#57534e] leading-relaxed">SaaS SMS e bots (2020–2021).</p>
-                    <p class="mt-3 font-mono text-[10px] text-[#78716c]">SaaS · Fullstack</p>
                 </article>
             </div>
         </div>
@@ -413,7 +338,8 @@
             </div>
             <nav class="flex flex-wrap gap-6 text-sm">
                 <a href="#sobre" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors">Sobre</a>
-                <a href="#infra" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors">Infra</a>
+                <a href="#skills" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors">Skills</a>
+                <a href="#infra" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors">Operação</a>
                 <a href="#experiencia" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors">Experiência</a>
                 <a href="https://github.com/Isaac-Foster" target="_blank" rel="noopener noreferrer" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors"><i class="fa-brands fa-github mr-1" aria-hidden="true"></i>GitHub</a>
                 <a href="https://linkedin.com/in/isack-foster" target="_blank" rel="noopener noreferrer" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors"><i class="fa-brands fa-linkedin mr-1" aria-hidden="true"></i>LinkedIn</a>
