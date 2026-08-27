@@ -1,381 +1,1051 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isack Vitor | Desenvolvedor full cycle · Python, APIs &amp; DevOps</title>
+    <title>Isack Vitor | Desenvolvedor Backend · Python, IA Local &amp; DevOps</title>
+    <meta name="description" content="Portfólio de Isack Vitor — Desenvolvedor Backend Full Cycle especializado em Python, FastAPI, Arquitetura Hexagonal, IA Vetorial Local, Bots no Telegram, RPAs e DevOps.">
     <link rel="shortcut icon" href="image.ico" type="image/x-icon">
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts: Plus Jakarta Sans, DM Sans, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['DM Sans', 'system-ui', 'sans-serif'],
-                        display: ['Syne', 'system-ui', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
                         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
                     },
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                            950: '#431407',
+                        },
+                        dark: {
+                            base: '#090807',
+                            surface: '#12100e',
+                            card: '#171412',
+                            cardHover: '#1f1b17',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            borderHot: 'rgba(234, 88, 12, 0.35)',
+                        }
+                    }
                 },
             },
         };
     </script>
     <style>
         :root {
-            --paper: #ddd4c4;
-            --paper-2: #d0c6b6;
-            --card: #e5ddd1;
-            --card-warm: #dccfbe;
-            --ink: #1c1814;
-            --ink-soft: #454039;
-            --accent: #9a3412;
-            --accent-hot: #c2410c;
-            --line: rgba(28, 24, 20, 0.18);
-            --hero: #171311;
+            --bg-base: #090807;
+            --accent: #ea580c;
+            --accent-glow: rgba(234, 88, 12, 0.25);
         }
-        html { scroll-behavior: smooth; }
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-        body {
-            background-color: var(--paper);
-            color: var(--ink);
-        }
-        .grain::before {
+
+        /* Subtle Noise Overlay */
+        .noise-bg::before {
             content: "";
             position: fixed;
             inset: 0;
             pointer-events: none;
-            opacity: 0.055;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            z-index: 0;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            z-index: 99;
         }
-        .tag {
-            font-family: "JetBrains Mono", ui-monospace, monospace;
-            font-size: 0.68rem;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
+
+        /* Ambient Glows */
+        .ambient-glow-1 {
+            background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(234, 88, 12, 0.16), transparent 70%);
         }
-        .section-kicker {
-            font-family: "DM Sans", system-ui, sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--accent-hot);
-            letter-spacing: -0.02em;
+        .ambient-glow-2 {
+            background: radial-gradient(ellipse 60% 40% at 90% 40%, rgba(194, 65, 12, 0.08), transparent 60%);
         }
-        .chip {
-            background: var(--card-warm);
-            border: 1px solid var(--line);
-            color: var(--ink);
+
+        /* Grid Pattern */
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 48px 48px;
         }
+
+        /* Card Glassmorphism */
+        .glass-card {
+            background: linear-gradient(180deg, rgba(26, 22, 19, 0.85) 0%, rgba(18, 16, 14, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(251, 146, 60, 0.35);
+            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.6), 0 0 20px -2px rgba(234, 88, 12, 0.12);
+        }
+
+        /* Timeline Line */
         .timeline-line {
             position: absolute;
-            left: 0.55rem;
+            left: 0.75rem;
             top: 0.5rem;
             bottom: 0.5rem;
             width: 2px;
-            background: linear-gradient(to bottom, #ea580c, rgba(234, 88, 12, 0.12));
+            background: linear-gradient(to bottom, #ea580c, rgba(234, 88, 12, 0.1));
         }
-        .hero-surface {
-            background-color: #090807;
-            background-image:
-                radial-gradient(ellipse 130% 85% at 82% 8%, rgba(194, 65, 12, 0.18), transparent 50%),
-                radial-gradient(ellipse 55% 45% at 8% 88%, rgba(194, 65, 12, 0.08), transparent 50%),
-                linear-gradient(168deg, #171311 0%, #0c0a09 45%, #12100e 100%);
+
+        /* Pulsing Dot */
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.15); }
         }
-        .hero-grid-faint {
-            background-image:
-                linear-gradient(rgba(251, 146, 60, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(251, 146, 60, 0.035) 1px, transparent 1px);
-            background-size: 52px 52px;
+        .animate-pulse-dot {
+            animation: pulse-subtle 2s infinite ease-in-out;
         }
-        .chip-dev {
-            background: rgba(0, 0, 0, 0.38);
-            border: 1px solid rgba(251, 146, 60, 0.28);
-            color: #ffedd5;
+
+        .filter-btn.active {
+            background-color: #ea580c;
+            color: #ffffff;
+            border-color: #ea580c;
         }
     </style>
 </head>
-<body class="font-sans antialiased text-[#1c1814] grain isolate">
-    <header class="sticky top-0 z-40 border-b border-[#1c1814]/12 bg-[#ddd4c4]/90 backdrop-blur-md">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-[4.25rem]">
-            <a href="#top" class="font-display font-bold text-lg md:text-xl tracking-tight text-[#1c1814] hover:text-[#9a3412] transition-colors">
-                Isack Vitor<span class="text-[#9a3412]">.</span>
+<body class="bg-[#090807] text-[#f5f0e8] font-sans antialiased selection:bg-brand-600 selection:text-white noise-bg min-h-screen">
+
+    <!-- Ambient Lighting Backgrounds -->
+    <div class="fixed inset-0 ambient-glow-1 pointer-events-none z-0" aria-hidden="true"></div>
+    <div class="fixed inset-0 ambient-glow-2 pointer-events-none z-0" aria-hidden="true"></div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 border-b border-white/[0.07] bg-[#090807]/85 backdrop-blur-xl transition-all duration-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#top" class="group flex items-center gap-2.5 font-display font-bold text-xl tracking-tight text-white transition-transform hover:scale-[1.02]">
+                <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white text-sm font-mono shadow-md shadow-brand-900/40">IV</span>
+                <span>Isack Vitor<span class="text-brand-500">.</span></span>
             </a>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#454039]">
-                <a href="#sobre" class="hover:text-[#9a3412] transition-colors">Sobre</a>
-                <a href="#skills" class="hover:text-[#9a3412] transition-colors">Skills</a>
-                <a href="#infra" class="hover:text-[#9a3412] transition-colors">Operação</a>
-                <a href="#experiencia" class="hover:text-[#9a3412] transition-colors">Experiência</a>
-                <a href="#projetos" class="hover:text-[#9a3412] transition-colors">Projetos</a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-[#b0a79a]">
+                <a href="#projetos" class="hover:text-brand-400 transition-colors">Projetos</a>
+                <a href="#skills" class="hover:text-brand-400 transition-colors">Skills &amp; Arquitetura</a>
+                <a href="#experiencia" class="hover:text-brand-400 transition-colors">Experiência</a>
+                <a href="#sobre" class="hover:text-brand-400 transition-colors">Sobre</a>
+                <a href="#contato" class="hover:text-brand-400 transition-colors">Contato</a>
             </nav>
-            <a href="https://wa.me/5527988090038" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-md border border-[#1c1814]/15 bg-[#c4baaa]/90 px-3 py-1.5 text-sm font-medium text-[#1c1814] hover:bg-[#b0a696] transition-colors" aria-label="WhatsApp">
-                <i class="fa-brands fa-whatsapp text-emerald-800" aria-hidden="true"></i>
-                <span class="hidden sm:inline">WhatsApp</span>
-            </a>
+
+            <!-- Status Badge & CTA -->
+            <div class="flex items-center gap-3">
+                <div class="hidden lg:inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot"></span>
+                    Disponível para projetos
+                </div>
+                <a href="https://wa.me/5527988090038" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg bg-brand-600 hover:bg-brand-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition-all hover:shadow-brand-600/30 hover:-translate-y-0.5" aria-label="Contato via WhatsApp">
+                    <i class="fa-brands fa-whatsapp text-base" aria-hidden="true"></i>
+                    <span class="hidden sm:inline">WhatsApp</span>
+                </a>
+            </div>
         </div>
     </header>
 
-    <section id="top" class="relative hero-surface min-h-[70vh] md:min-h-[82vh] flex flex-col justify-center text-[#ece6dc] overflow-hidden">
-        <div class="absolute inset-0 hero-grid-faint opacity-50 pointer-events-none" aria-hidden="true"></div>
-        <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" aria-hidden="true"></div>
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section id="top" class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden border-b border-white/[0.06]">
+            <div class="absolute inset-0 grid-pattern opacity-30 pointer-events-none" aria-hidden="true"></div>
+            
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
+                <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
+                    
+                    <!-- Text Content -->
+                    <div class="flex-1 max-w-3xl">
+                        <div class="inline-flex items-center gap-2 rounded-md border border-brand-500/30 bg-brand-950/40 px-3 py-1 font-mono text-xs font-medium text-brand-300 mb-5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span>
+                            Full Cycle Backend Developer · Python &amp; DevOps
+                        </div>
 
-        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-24">
-            <div class="flex flex-col gap-10 md:gap-12 items-start">
-                <div class="flex-1 min-w-0 w-full md:pl-10 md:border-l-[3px] border-[#ea580c]/80">
-                    <div class="w-10 h-1 rounded-full bg-gradient-to-r from-[#c2410c] to-[#ea580c] mb-4" aria-hidden="true"></div>
-                    <p class="text-sm text-[#b8a99a] mb-1 tracking-wide">Python há uns bons anos · autônomo desde 2020</p>
-                    <p class="font-mono text-[11px] sm:text-xs text-[#fb923c]/95 tracking-[0.18em] uppercase mb-2">Full cycle · Python · APIs · Infra</p>
-                    <p class="inline-flex items-center rounded-sm border border-orange-400/35 bg-[#c2410c]/20 px-2.5 py-1 font-mono text-[10px] sm:text-xs text-[#ffedd5] mb-4">
-                        Inglês A2 · leitura técnica
+                        <h1 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-[1.18] mb-6">
+                            Construindo sistemas backend, <span class="text-brand-400">IA vetorial local</span> e automações resilientes.
+                        </h1>
+
+                        <p class="text-[#c7beb3] text-base sm:text-lg font-normal leading-relaxed mb-8 max-w-2xl">
+                            Desenvolvedor focado em soluções de ponta a ponta: do requisito à <strong>arquitetura hexagonal</strong>, integrações financeiras (<strong class="text-[#f5f0e8]">Pix/WebSockets</strong>), mensageria com <strong>Redis/Filas</strong> e operação estável em produção.
+                        </p>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <a href="#projetos" class="inline-flex items-center gap-2 rounded-lg bg-brand-600 hover:bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-xl shadow-brand-900/40 transition-all hover:shadow-brand-600/30 hover:-translate-y-0.5">
+                                <i class="fa-solid fa-layer-group" aria-hidden="true"></i> Ver Projetos em Produção
+                            </a>
+                            <a href="https://github.com/Isaac-Foster" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] hover:bg-white/[0.09] hover:border-white/25 px-5 py-3 text-sm font-medium text-white transition-all hover:-translate-y-0.5">
+                                <i class="fa-brands fa-github text-lg" aria-hidden="true"></i> GitHub
+                            </a>
+                            <a href="https://linkedin.com/in/isack-foster" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] hover:bg-white/[0.09] hover:border-white/25 px-5 py-3 text-sm font-medium text-white transition-all hover:-translate-y-0.5">
+                                <i class="fa-brands fa-linkedin text-lg text-sky-400" aria-hidden="true"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Highlight Metrics Card -->
+                    <div class="w-full lg:w-80 flex flex-col gap-3.5">
+                        <div class="glass-card rounded-2xl p-5 border border-white/10">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-xs font-mono uppercase tracking-wider text-[#9e9486]">Experiência Prática</span>
+                                <i class="fa-solid fa-terminal text-brand-400 text-sm" aria-hidden="true"></i>
+                            </div>
+                            <p class="font-display font-bold text-3xl text-white">+8 Anos</p>
+                            <p class="text-xs text-[#a89e90] mt-1">No desenvolvimento de software (Python desde 2019)</p>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-5 border border-white/10">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-xs font-mono uppercase tracking-wider text-[#9e9486]">Arquitetura &amp; IA</span>
+                                <i class="fa-solid fa-brain text-brand-400 text-sm" aria-hidden="true"></i>
+                            </div>
+                            <p class="font-display font-bold text-2xl text-white">Hexagonal &amp; ONNX</p>
+                            <p class="text-xs text-[#a89e90] mt-1">IA vetorial densa em CPU (sem custo de API)</p>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-5 border border-white/10">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-xs font-mono uppercase tracking-wider text-[#9e9486]">Bots &amp; Concorrência</span>
+                                <i class="fa-solid fa-bolt text-brand-400 text-sm" aria-hidden="true"></i>
+                            </div>
+                            <p class="font-display font-bold text-2xl text-white">+30 Instâncias</p>
+                            <p class="text-xs text-[#a89e90] mt-1">Sistemas simultâneos operando em produção</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase Section -->
+        <section id="projetos" class="py-20 md:py-28 relative border-b border-white/[0.06] bg-[#0c0a09]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 font-mono text-xs text-brand-400 tracking-wider uppercase mb-2">
+                            <span class="w-2 h-0.5 bg-brand-500"></span> 01 — Portfólio em Ação
+                        </div>
+                        <h2 class="font-display font-bold text-3xl md:text-4xl text-white tracking-tight">Projetos &amp; Engenharia de Produção</h2>
+                    </div>
+                    <p class="text-[#a89e90] max-w-md text-sm leading-relaxed">
+                        Aplicações corporativas, sistemas de missão crítica, robôs de automação e bots em larga escala construídos com foco em confiabilidade.
                     </p>
-                    <h1 class="font-display font-bold text-[2.1rem] sm:text-5xl md:text-[3.1rem] leading-[1.08] tracking-tight text-[#f7f1ea]">
-                        Isack Vitor Rosario Neto
-                    </h1>
-                    <p class="mt-5 text-lg md:text-xl text-[#d4cbc2] font-normal italic max-w-2xl leading-snug border-l-2 border-[#c2410c]/40 pl-4 -ml-1 md:ml-0">
-                        Backend com foco em integração e entrega: APIs, pagamentos, mensageria, dados e operação em produção quando necessário.
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2 mb-12">
+                    <button type="button" class="filter-btn active px-4 py-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-xs font-medium transition-all" data-filter="all">Todos os Projetos</button>
+                    <button type="button" class="filter-btn px-4 py-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-xs font-medium text-[#c4bbb0] hover:text-white transition-all" data-filter="enterprise">Fintech &amp; Corporativo</button>
+                    <button type="button" class="filter-btn px-4 py-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-xs font-medium text-[#c4bbb0] hover:text-white transition-all" data-filter="bots">Bots &amp; IA Local</button>
+                    <button type="button" class="filter-btn px-4 py-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-xs font-medium text-[#c4bbb0] hover:text-white transition-all" data-filter="rpa">RPAs &amp; Automação</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <!-- PROJECT 1: AYU — Promotions Engine -->
+                    <article class="project-card glass-card rounded-2xl overflow-hidden flex flex-col group border border-white/10" data-category="bots">
+                        <div class="relative w-full h-56 sm:h-64 overflow-hidden bg-black">
+                            <img src="assets/ayu-promotions.jpg" alt="Banner do robô AYU Promotions Engine com estética cyberpunk e telas neon de monitoramento" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-black/40"></div>
+                            
+                            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md border border-brand-500/40 px-3 py-1 font-mono text-[11px] font-semibold text-brand-300">
+                                    <i class="fa-solid fa-microchip text-xs"></i> IA Vetorial Local (CPU)
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-950/80 backdrop-blur-md border border-emerald-500/40 px-2.5 py-1 font-mono text-[11px] font-medium text-emerald-300">
+                                    ● Em Produção
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-start justify-between gap-3 mb-3">
+                                    <div>
+                                        <p class="font-mono text-xs text-brand-400 font-medium tracking-wide uppercase">Motor de Ofertas &amp; Radar</p>
+                                        <h3 class="font-display font-bold text-2xl text-white group-hover:text-brand-300 transition-colors">AYU — Promotions &amp; Deals Engine</h3>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-xl bg-brand-950/60 border border-brand-500/30 flex items-center justify-center text-brand-400 shrink-0">
+                                        <i class="fa-solid fa-bolt text-lg" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                                <p class="text-[#c4bbb0] text-sm sm:text-base leading-relaxed mb-4">
+                                    Motor autônomo de promoções (Shopee Afiliados) e radar inteligente com <strong class="text-white">busca inline instantânea (&lt;1s)</strong> no Telegram, eliminação de falsos-positivos e painel com telemetria em tempo real.
+                                </p>
+
+                                <p class="text-[#9e9486] text-xs sm:text-sm leading-relaxed mb-6 border-l-2 border-brand-500/40 pl-3.5">
+                                    Construído sob <strong>Arquitetura Hexagonal</strong>, conta com IA vetorial local (FastEmbed ONNX 384d na CPU), copywriting persuasivo com Mistral AI, segmentação por público/gênero e sistema de alertas de wishlist no privado via Redis e PostgreSQL.
+                                </p>
+
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">FastAPI</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Telethon</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-brand-950/50 border border-brand-500/30 font-mono text-xs text-brand-300">FastEmbed ONNX</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Redis (Vetores/Fila)</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">PostgreSQL</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Mistral AI</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Docker</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2.5 pt-4 border-t border-white/[0.07]">
+                                <a href="https://t.me/ayupromobot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg bg-brand-600 hover:bg-brand-500 px-3.5 py-2 text-xs sm:text-sm font-semibold text-white transition-all shadow-md shadow-brand-900/30">
+                                    <i class="fa-brands fa-telegram text-base" aria-hidden="true"></i> Bot @ayupromobot
+                                </a>
+                                <a href="https://t.me/AYUPROMOS" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.05] hover:bg-white/[0.1] px-3.5 py-2 text-xs sm:text-sm font-medium text-white transition-colors">
+                                    <i class="fa-solid fa-bullhorn text-xs text-brand-400" aria-hidden="true"></i> Canal de Ofertas
+                                </a>
+                                <a href="https://github.com/Isaac-Foster/promo-bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.05] hover:bg-white/[0.1] px-3.5 py-2 text-xs sm:text-sm font-medium text-white transition-colors">
+                                    <i class="fa-brands fa-github text-base" aria-hidden="true"></i> Repositório
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 2: G2 Extratos Bancários -->
+                    <article class="project-card glass-card rounded-2xl overflow-hidden flex flex-col group border border-white/10" data-category="enterprise">
+                        <div class="relative w-full h-56 sm:h-64 overflow-hidden bg-black">
+                            <img src="assets/g2-extract.png" alt="Banner do G2 Extratos Bancários Suite Contábil com OCR Inteligente" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-black/40"></div>
+                            
+                            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md border border-emerald-500/40 px-3 py-1 font-mono text-[11px] font-semibold text-emerald-300">
+                                    <i class="fa-solid fa-file-invoice-dollar text-xs"></i> OCR Híbrido Contábil
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-950/80 backdrop-blur-md border border-blue-500/40 px-2.5 py-1 font-mono text-[11px] font-medium text-blue-300">
+                                    ● Corporativo
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-start justify-between gap-3 mb-3">
+                                    <div>
+                                        <p class="font-mono text-xs text-emerald-400 font-medium tracking-wide uppercase">Suite Contábil &amp; Inteligência Artificial</p>
+                                        <h3 class="font-display font-bold text-2xl text-white group-hover:text-emerald-300 transition-colors">G2 Extratos Bancários</h3>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-xl bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                                        <i class="fa-solid fa-receipt text-lg" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                                <p class="text-[#c4bbb0] text-sm sm:text-base leading-relaxed mb-4">
+                                    Sistema corporativo avançado para <strong class="text-white">triagem em lote (ZIP/PDFs múltiplos)</strong>, extração, classificação por regras e conferência inteligente de transações bancárias com exportação nativa para o sistema <strong>Questor Contábil</strong>.
+                                </p>
+
+                                <p class="text-[#9e9486] text-xs sm:text-sm leading-relaxed mb-6 border-l-2 border-emerald-500/40 pl-3.5">
+                                    Conta com motor híbrido de OCR com <strong>Docling (PyTorch local em background não-bloqueante)</strong> e Mistral AI, visualização lado a lado do PDF com conferência interativa, drag &amp; drop de lançamentos, cálculo de assertividade e motor De-Para.
+                                </p>
+
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">FastAPI</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-emerald-950/50 border border-emerald-500/30 font-mono text-xs text-emerald-300">Docling (PyTorch)</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Mistral AI</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">PostgreSQL (BYTEA)</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Redis / SSE</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Questor Contábil</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2.5 pt-4 border-t border-white/[0.07]">
+                                <span class="inline-flex items-center gap-2 rounded-lg bg-emerald-950/80 border border-emerald-500/30 px-3.5 py-2 text-xs font-semibold text-emerald-300">
+                                    <i class="fa-solid fa-building-circle-check" aria-hidden="true"></i> Projeto Corporativo / Produção
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 3: ClickPto Contabilidade & Ledger -->
+                    <article class="project-card glass-card rounded-2xl overflow-hidden flex flex-col group border border-white/10" data-category="enterprise">
+                        <div class="relative w-full h-56 sm:h-64 overflow-hidden bg-black">
+                            <img src="assets/clickpto-contabilidade.jpg" alt="Banner do sistema de contabilidade e ledger multi-tenant ClickPto" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-black/40"></div>
+                            
+                            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md border border-brand-500/40 px-3 py-1 font-mono text-[11px] font-semibold text-brand-300">
+                                    <i class="fa-solid fa-coins text-xs"></i> Multi-Tenant &amp; Ledger
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-purple-950/80 backdrop-blur-md border border-purple-500/40 px-2.5 py-1 font-mono text-[11px] font-medium text-purple-300">
+                                    ● Fintech / Core
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-start justify-between gap-3 mb-3">
+                                    <div>
+                                        <p class="font-mono text-xs text-brand-400 font-medium tracking-wide uppercase">Backend White-Label &amp; Reconciliação</p>
+                                        <h3 class="font-display font-bold text-2xl text-white group-hover:text-brand-300 transition-colors">ClickPto — Contabilidade API &amp; Ledger</h3>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-xl bg-brand-950/60 border border-brand-500/30 flex items-center justify-center text-brand-400 shrink-0">
+                                        <i class="fa-solid fa-scale-balanced text-lg" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                                <p class="text-[#c4bbb0] text-sm sm:text-base leading-relaxed mb-4">
+                                    Backend completo para registro contábil de caixas, movimentos fiat, movimentos crypto, ordens OTC e consulta de saldos por ledger com <strong class="text-white">lançamentos idempotentes e auto-balance de conciliação</strong>.
+                                </p>
+
+                                <p class="text-[#9e9486] text-xs sm:text-sm leading-relaxed mb-6 border-l-2 border-brand-500/40 pl-3.5">
+                                    Arquitetura com <strong>Multi-tenancy (Schema-per-Tenant no PostgreSQL 16)</strong>, notificações em tempo real via SSE + Redis pub/sub, RBAC granular, soft-delete com snapshot JSON e auditoria ELK Stack. Cobertura de testes automatizados com 95 testes no Pytest.
+                                </p>
+
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Python 3.12+</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">FastAPI</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-brand-950/50 border border-brand-500/30 font-mono text-xs text-brand-300">Multi-Tenant</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">SQLAlchemy Async</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">PostgreSQL 16</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Redis 7 (SSE/Cache)</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Docker / New Relic</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2.5 pt-4 border-t border-white/[0.07]">
+                                <span class="inline-flex items-center gap-2 rounded-lg bg-brand-950/80 border border-brand-500/30 px-3.5 py-2 text-xs font-semibold text-brand-300">
+                                    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Core Fintech / ClickPto
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 4: Licitize — Bidding Intelligence -->
+                    <article class="project-card glass-card rounded-2xl overflow-hidden flex flex-col group border border-white/10" data-category="rpa">
+                        <div class="relative w-full h-56 sm:h-64 overflow-hidden bg-black">
+                            <img src="assets/licitize-rpa.jpg" alt="Banner dos robôs de licitações Licitize com martelo digital e conexões a portais de pregão" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-black/40"></div>
+                            
+                            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md border border-amber-500/40 px-3 py-1 font-mono text-[11px] font-semibold text-amber-300">
+                                    <i class="fa-solid fa-gavel text-xs"></i> Robôs de Pregão
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-950/80 backdrop-blur-md border border-emerald-500/40 px-2.5 py-1 font-mono text-[11px] font-medium text-emerald-300">
+                                    ● Cliente de Alto Valor
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-start justify-between gap-3 mb-3">
+                                    <div>
+                                        <p class="font-mono text-xs text-amber-400 font-medium tracking-wide uppercase">Automação de Compras Públicas</p>
+                                        <h3 class="font-display font-bold text-2xl text-white group-hover:text-amber-300 transition-colors">Licitize — Plataforma de Licitações</h3>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-xl bg-amber-950/60 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                                        <i class="fa-solid fa-handshake text-lg" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                                <p class="text-[#c4bbb0] text-sm sm:text-base leading-relaxed mb-4">
+                                    Automação avançada para captura de editais e <strong class="text-white">disputa de lances em tempo real</strong> em portais governamentais de pregão eletrônico (ComprasGov, PNCP, BLL, BNC, PCP, LicitaNet).
+                                </p>
+
+                                <p class="text-[#9e9486] text-xs sm:text-sm leading-relaxed mb-6 border-l-2 border-amber-500/40 pl-3.5">
+                                    Executa rotinas de login com fallback via httpx, registro automático de propostas com validação, controle de disputa por tipo de pregão (DE, PA, PAF), análise de lances concorrentes e quebra automatizada de CAPTCHA v2 via CapMonster.
+                                </p>
+
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Python 3.12</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Playwright</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">httpx Async</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-amber-950/50 border border-amber-500/30 font-mono text-xs text-amber-300">CapMonster Solver</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">SQLAlchemy / PostgreSQL</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">APScheduler</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2.5 pt-4 border-t border-white/[0.07]">
+                                <span class="inline-flex items-center gap-2 rounded-lg bg-amber-950/80 border border-amber-500/30 px-3.5 py-2 text-xs font-semibold text-amber-300">
+                                    <i class="fa-solid fa-briefcase" aria-hidden="true"></i> Case Rime Tecnologia / Produção
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 5: RPA DS-160 -->
+                    <article class="project-card glass-card rounded-2xl overflow-hidden flex flex-col group border border-white/10" data-category="rpa">
+                        <div class="relative w-full h-56 sm:h-64 overflow-hidden bg-black">
+                            <img src="assets/ds160-rpa.jpg" alt="Banner do robô de automação consular DS-160 com hologramas de passaporte e formulários" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-black/40"></div>
+                            
+                            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md border border-blue-500/40 px-3 py-1 font-mono text-[11px] font-semibold text-blue-300">
+                                    <i class="fa-solid fa-passport text-xs"></i> Legaltech &amp; Visto Americano
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-950/80 backdrop-blur-md border border-blue-500/40 px-2.5 py-1 font-mono text-[11px] font-medium text-blue-300">
+                                    ● Advocacia Paulo
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-start justify-between gap-3 mb-3">
+                                    <div>
+                                        <p class="font-mono text-xs text-blue-400 font-medium tracking-wide uppercase">Automação Consular de Alta Precisão</p>
+                                        <h3 class="font-display font-bold text-2xl text-white group-hover:text-blue-300 transition-colors">DS-160 — Automação Consular</h3>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-xl bg-blue-950/60 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
+                                        <i class="fa-solid fa-scale-unbalanced-flip text-lg" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                                <p class="text-[#c4bbb0] text-sm sm:text-base leading-relaxed mb-4">
+                                    Robô de alta precisão para <strong class="text-white">preenchimento automatizado multi-etapas</strong> de formulários consulares DS-160 do Departamento de Estado dos EUA, eliminando retrabalho em escritórios de imigração.
+                                </p>
+
+                                <p class="text-[#9e9486] text-xs sm:text-sm leading-relaxed mb-6 border-l-2 border-blue-500/40 pl-3.5">
+                                    Executa validações rigorosas de dados do solicitante, quebra de captcha de segurança, controle e persistência do ID da aplicação no banco de dados, recuperação de passos e geração de relatórios de auditoria.
+                                </p>
+
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Python</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Playwright RPA</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-blue-950/50 border border-blue-500/30 font-mono text-xs text-blue-300">CAPTCHA Solver</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">FastAPI</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">PostgreSQL</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Docker</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2.5 pt-4 border-t border-white/[0.07]">
+                                <span class="inline-flex items-center gap-2 rounded-lg bg-blue-950/80 border border-blue-500/30 px-3.5 py-2 text-xs font-semibold text-blue-300">
+                                    <i class="fa-solid fa-gavel" aria-hidden="true"></i> Case Legaltech / Advocacia
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 6: Andreza Correios Bot -->
+                    <article class="project-card glass-card rounded-2xl overflow-hidden flex flex-col group border border-white/10" data-category="bots">
+                        <div class="relative w-full h-56 sm:h-64 overflow-hidden bg-black">
+                            <img src="assets/andreza-correios.png" alt="Mascote anime da Andreza Correios segurando encomenda e smartphone com app de rastreio" class="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-black/40"></div>
+                            
+                            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md border border-amber-500/40 px-3 py-1 font-mono text-[11px] font-semibold text-amber-300">
+                                    <i class="fa-solid fa-box text-xs"></i> Rastreio Automático
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-950/80 backdrop-blur-md border border-emerald-500/40 px-2.5 py-1 font-mono text-[11px] font-medium text-emerald-300">
+                                    ● Bot Ativo
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-start justify-between gap-3 mb-3">
+                                    <div>
+                                        <p class="font-mono text-xs text-amber-400 font-medium tracking-wide uppercase">Bot de Mensageria &amp; Notificações</p>
+                                        <h3 class="font-display font-bold text-2xl text-white group-hover:text-amber-300 transition-colors">Andreza Correios</h3>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-xl bg-amber-950/60 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                                        <i class="fa-solid fa-box-open text-lg" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                                <p class="text-[#c4bbb0] text-sm sm:text-base leading-relaxed mb-4">
+                                    Bot conversacional no Telegram para <strong class="text-white">rastreamento automático de encomendas</strong> via API dos Correios, com notificações a cada mudança de status e acompanhamento do pacote sem consultas manuais repetidas.
+                                </p>
+
+                                <p class="text-[#9e9486] text-xs sm:text-sm leading-relaxed mb-6 border-l-2 border-amber-500/40 pl-3.5">
+                                    Desenvolvido com foco em alta responsividade e persistência de dados do usuário no PostgreSQL, garantindo entrega confiável de mensagens assíncronas e histórico persistido.
+                                </p>
+
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Telethon</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">httpx</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">PostgreSQL</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">AsyncIO</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Docker</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2.5 pt-4 border-t border-white/[0.07]">
+                                <a href="https://t.me/Andreza_correios_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg bg-amber-600 hover:bg-amber-500 px-3.5 py-2 text-xs sm:text-sm font-semibold text-white transition-all shadow-md shadow-amber-900/30">
+                                    <i class="fa-brands fa-telegram text-base" aria-hidden="true"></i> Bot @Andreza_correios_bot
+                                </a>
+                                <a href="https://www.linkedin.com/posts/isack-foster_andreza-correios-share-7456446986091716608-0RxP" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.05] hover:bg-white/[0.1] px-3.5 py-2 text-xs sm:text-sm font-medium text-white transition-colors">
+                                    <i class="fa-brands fa-linkedin text-base text-sky-400" aria-hidden="true"></i> Ver no LinkedIn
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 7: 99Freelas Notifications -->
+                    <article class="project-card glass-card rounded-2xl overflow-hidden flex flex-col group border border-white/10" data-category="bots">
+                        <div class="relative w-full h-56 sm:h-64 overflow-hidden bg-black">
+                            <img src="assets/99freelas-channel.png" alt="Captura de tela do canal 99Freelas no Telegram mostrando alertas de vagas freelancers em tempo real" class="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-black/40"></div>
+                            
+                            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md border border-cyan-500/40 px-3 py-1 font-mono text-[11px] font-semibold text-cyan-300">
+                                    <i class="fa-solid fa-radar text-xs"></i> Scraping &amp; Alertas
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-950/80 backdrop-blur-md border border-emerald-500/40 px-2.5 py-1 font-mono text-[11px] font-medium text-emerald-300">
+                                    ● Canal em Operação
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-start justify-between gap-3 mb-3">
+                                    <div>
+                                        <p class="font-mono text-xs text-cyan-400 font-medium tracking-wide uppercase">Radar &amp; Automação Freelancer</p>
+                                        <h3 class="font-display font-bold text-2xl text-white group-hover:text-cyan-300 transition-colors">99Freelas — Alertas em Tempo Real</h3>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-xl bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                                        <i class="fa-solid fa-briefcase text-lg" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                                <p class="text-[#c4bbb0] text-sm sm:text-base leading-relaxed mb-4">
+                                    Pipeline de raspagem contínua e inteligência de mercado que monitora a plataforma 99Freelas, filtra projetos relevantes por palavras-chave e dispara <strong class="text-white">notificações instantâneas no canal do Telegram</strong>.
+                                </p>
+
+                                <p class="text-[#9e9486] text-xs sm:text-sm leading-relaxed mb-6 border-l-2 border-cyan-500/40 pl-3.5">
+                                    Elimina o trabalho manual de busca por propostas freelance, com formatação estruturada de requisitos, orçamento, tags de tecnologia e link direto para envio da proposta.
+                                </p>
+
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Python</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Scraping / Crawlers</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Telegram Bot API</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">AsyncIO</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2.5 pt-4 border-t border-white/[0.07]">
+                                <a href="https://t.me/nnfreelas" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg bg-cyan-700 hover:bg-cyan-600 px-3.5 py-2 text-xs sm:text-sm font-semibold text-white transition-all shadow-md shadow-cyan-900/30">
+                                    <i class="fa-brands fa-telegram text-base" aria-hidden="true"></i> Canal @nnfreelas
+                                </a>
+                                <a href="https://github.com/m3coder/99freelas_notifications_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.05] hover:bg-white/[0.1] px-3.5 py-2 text-xs sm:text-sm font-medium text-white transition-colors">
+                                    <i class="fa-brands fa-github text-base" aria-hidden="true"></i> Repositório
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 8: LinkedIn Connector & Automation -->
+                    <article class="project-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between p-6 sm:p-7 border border-white/10" data-category="rpa">
+                        <div>
+                            <div class="flex items-start justify-between gap-3 mb-4">
+                                <div>
+                                    <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-950/60 border border-blue-500/30 px-2.5 py-0.5 font-mono text-[11px] text-blue-300 mb-2">
+                                        ● Open Source / RPA
+                                    </span>
+                                    <h3 class="font-display font-bold text-2xl text-white group-hover:text-blue-300 transition-colors">LinkedIn Connector &amp; Jobs</h3>
+                                </div>
+                                <div class="w-10 h-10 rounded-xl bg-blue-950/60 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
+                                    <i class="fa-brands fa-linkedin text-lg" aria-hidden="true"></i>
+                                </div>
+                            </div>
+
+                            <p class="text-[#c4bbb0] text-sm sm:text-base leading-relaxed mb-4">
+                                Automação de conexões e rotinas de networking estratégico no LinkedIn, construído com ferramentas modernas de RPA para simulação de comportamento humano e coleta seletiva de oportunidades de vagas.
+                            </p>
+
+                            <p class="text-[#9e9486] text-xs sm:text-sm leading-relaxed mb-6 border-l-2 border-blue-500/40 pl-3.5">
+                                Inclui rotinas de bypass, controle de rate limit, exportação estruturada e módulo para distribuição dos dados em canais externos.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Python</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Playwright</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">RPA &amp; Scraping</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 font-mono text-xs text-white">Docker</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2.5 pt-4 border-t border-white/[0.07]">
+                            <a href="https://github.com/Isaac-Foster/linkedin_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-500 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all shadow-md shadow-blue-900/30">
+                                <i class="fa-brands fa-github text-base" aria-hidden="true"></i> Acessar Repositório
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Architecture Section -->
+        <section id="skills" class="py-20 md:py-28 relative border-b border-white/[0.06] bg-[#090807]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                
+                <div class="max-w-3xl mb-14">
+                    <div class="inline-flex items-center gap-2 font-mono text-xs text-brand-400 tracking-wider uppercase mb-2">
+                        <span class="w-2 h-0.5 bg-brand-500"></span> 02 — Habilidades &amp; Ferramentas
+                    </div>
+                    <h2 class="font-display font-bold text-3xl md:text-4xl text-white tracking-tight mb-4">Engenharia Backend &amp; Infraestrutura</h2>
+                    <p class="text-[#a89e90] text-base sm:text-lg leading-relaxed">
+                        Foco em converter regras de negócio complexas em software confiável, modular e com alto índice de disponibilidade em produção.
                     </p>
-                    <p class="mt-6 text-[#c9bfb5] text-base md:text-lg max-w-2xl leading-relaxed">
-                        Eu costumo ir do que o cliente precisa até o final da entrega: requisito, modelo, API, fila quando precisa, e infraestrutura quando o projeto pede.
+                </div>
+
+                <!-- 4 Pillars Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Pillar 1: Backend & Arquitetura -->
+                    <div class="glass-card rounded-2xl p-7 border border-white/10 hover:border-brand-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-brand-950/60 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-5">
+                            <i class="fa-solid fa-layer-group text-xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">Backend &amp; Arquitetura</h3>
+                        <p class="text-[#c4bbb0] text-sm leading-relaxed mb-5">
+                            Desenvolvimento de microsserviços e APIs com <strong>FastAPI</strong> sob princípios de <strong>Arquitetura Hexagonal</strong> e Clean Architecture. Foco em separação estrita de domínios, concorrência nativa com <strong>AsyncIO</strong>, WebSockets e contratos RESTful seguros.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Python 3.10+</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">FastAPI</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Hexagonal (Ports &amp; Adapters)</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">AsyncIO</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Pytest &amp; Ruff</span>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2: Dados, Vetores & Mensageria -->
+                    <div class="glass-card rounded-2xl p-7 border border-white/10 hover:border-brand-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-brand-950/60 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-5">
+                            <i class="fa-solid fa-database text-xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">Bancos de Dados &amp; Filas</h3>
+                        <p class="text-[#c4bbb0] text-sm leading-relaxed mb-5">
+                            Modelagem relacional e NoSQL para alto desempenho. Utilização intensiva de <strong>Redis</strong> para mensageria assíncrona, filas de workers com <strong>Celery</strong>, cache de sessões e armazenamento persistente de vetores de similaridade.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">PostgreSQL 16</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Redis (Filas &amp; Vetores)</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">SQLAlchemy 2.0</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Celery</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">MongoDB</span>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3: IA Local & Automações -->
+                    <div class="glass-card rounded-2xl p-7 border border-white/10 hover:border-brand-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-brand-950/60 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-5">
+                            <i class="fa-solid fa-brain text-xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">IA Vetorial Local, OCR &amp; RPAs</h3>
+                        <p class="text-[#c4bbb0] text-sm leading-relaxed mb-5">
+                            Implementação de IA prática sem dependência exclusiva de APIs caras: inferência de embeddings locais densos via <strong>FastEmbed ONNX</strong> rodando direto na CPU, OCR local com <strong>Docling (PyTorch)</strong>, copywriting com <strong>Mistral AI</strong> e robôs complexos com <strong>Playwright</strong> e <strong>Telethon</strong>.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">FastEmbed ONNX (384d)</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Docling (PyTorch)</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Telethon</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Playwright RPA</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Mistral AI</span>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 4: DevOps & Operação em Produção -->
+                    <div class="glass-card rounded-2xl p-7 border border-white/10 hover:border-brand-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-brand-950/60 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-5">
+                            <i class="fa-solid fa-server text-xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">DevOps &amp; Infraestrutura</h3>
+                        <p class="text-[#c4bbb0] text-sm leading-relaxed mb-5">
+                            Publicação contínua e ambientes reprodutíveis. Containerização com <strong>Docker</strong> e Docker Compose, pipelines de <strong>CI/CD</strong> com GitHub Actions, gestão com <strong>Coolify</strong> e ECR, e administração de servidores Linux VPS (Oracle Cloud, Azure).
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Docker &amp; Compose</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">GitHub Actions</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Coolify &amp; ECR</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">Linux / Nginx</span>
+                            <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#dcd4c7]">uv Package Manager</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline Section -->
+        <section id="experiencia" class="py-20 md:py-28 relative border-b border-white/[0.06] bg-[#0c0a09]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                
+                <div class="max-w-3xl mb-14">
+                    <div class="inline-flex items-center gap-2 font-mono text-xs text-brand-400 tracking-wider uppercase mb-2">
+                        <span class="w-2 h-0.5 bg-brand-500"></span> 03 — Trajetória
+                    </div>
+                    <h2 class="font-display font-bold text-3xl md:text-4xl text-white tracking-tight mb-4">Experiência Profissional</h2>
+                    <p class="text-[#a89e90] text-base leading-relaxed">
+                        Histórico de entregas com foco em backend, integrações financeiras e responsabilidade técnica.
                     </p>
-                    <div class="mt-10 flex flex-wrap gap-3 items-center">
-                        <a href="#projetos" class="inline-flex items-center justify-center rounded-md bg-[#c2410c] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#9a3412] transition-colors">Ver projetos</a>
-                        <a href="https://github.com/Isaac-Foster" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-md border border-[#ece6dc]/25 px-5 py-2.5 text-sm font-medium text-[#ece6dc] hover:bg-[#ece6dc]/10 transition-colors">
-                            <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="relative pl-6 sm:pl-10 space-y-10">
+                    <div class="timeline-line hidden sm:block" aria-hidden="true"></div>
+
+                    <!-- Job 1: ClickPto -->
+                    <article class="relative sm:pl-6 group">
+                        <div class="hidden sm:block absolute left-[-1.85rem] top-1.5 w-3.5 h-3.5 rounded-full bg-brand-600 border-4 border-[#0c0a09] group-hover:scale-125 transition-transform"></div>
+                        <div class="glass-card rounded-2xl p-6 sm:p-7 border border-white/10">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <div class="flex items-center gap-3">
+                                    <h3 class="font-display font-bold text-xl text-white">ClickPto</h3>
+                                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-600/20 text-brand-300 border border-brand-500/30">Atual</span>
+                                </div>
+                                <span class="font-mono text-xs text-[#9e9486]">Set 2025 – Presente · Remoto</span>
+                            </div>
+                            <p class="font-semibold text-brand-400 text-sm mb-3">Analista de Sistemas / Desenvolvedor Backend</p>
+                            <p class="text-[#c4bbb0] text-sm leading-relaxed mb-4">
+                                Evolução de bases legadas em FastAPI para <strong class="text-white">Arquitetura Hexagonal</strong>; desenvolvimento de integrações financeiras complexas (CorpXBank, E2Bank, MPCVault/OTC, Binance WebSocket, Coinext); implementação de <strong class="text-white">split Pix em alto volume</strong>; segurança avançada (JWT, TOTP, bcrypt); CI/CD com GitHub Actions, Docker, ECR e Coolify; qualidade contínua com pre-commit, Ruff e Pytest.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">FastAPI</span>
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">Split Pix</span>
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">WebSockets</span>
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">Coolify / ECR</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Job 2: Crono Wise -->
+                    <article class="relative sm:pl-6 group">
+                        <div class="hidden sm:block absolute left-[-1.85rem] top-1.5 w-3.5 h-3.5 rounded-full bg-[#3a332c] border-4 border-[#0c0a09] group-hover:bg-brand-500 transition-colors"></div>
+                        <div class="glass-card rounded-2xl p-6 sm:p-7 border border-white/10">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <h3 class="font-display font-bold text-xl text-white">Crono Wise</h3>
+                                <span class="font-mono text-xs text-[#9e9486]">Jul 2025 – Ago 2025 · Remoto</span>
+                            </div>
+                            <p class="font-semibold text-brand-400 text-sm mb-3">Desenvolvedor Python</p>
+                            <p class="text-[#c4bbb0] text-sm leading-relaxed mb-4">
+                                Automação para <strong class="text-white">Corban</strong> (Correspondente Bancário): integração complexa com o banco BTG Pactual via protocolos <strong class="text-white">SOAP e Zeep</strong>; concorrência com <strong>AsyncIO</strong> e semáforos para controle estrito de rate limit; orquestração de filas assíncronas com <strong>Celery e Redis</strong>.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">SOAP / Zeep</span>
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">BTG Pactual</span>
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">Celery &amp; Redis</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Job 3: Rime Tecnologia -->
+                    <article class="relative sm:pl-6 group">
+                        <div class="hidden sm:block absolute left-[-1.85rem] top-1.5 w-3.5 h-3.5 rounded-full bg-[#3a332c] border-4 border-[#0c0a09] group-hover:bg-brand-500 transition-colors"></div>
+                        <div class="glass-card rounded-2xl p-6 sm:p-7 border border-white/10">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <h3 class="font-display font-bold text-xl text-white">Rime Tecnologia</h3>
+                                <span class="font-mono text-xs text-[#9e9486]">Out 2024 – Jul 2025 · Remoto</span>
+                            </div>
+                            <p class="font-semibold text-brand-400 text-sm mb-3">Desenvolvedor Python / Full Cycle</p>
+                            <p class="text-[#c4bbb0] text-sm leading-relaxed mb-4">
+                                Atuação de ciclo completo junto a clientes corporativos: levantamento de requisitos, sprints, modelagem e entrega. Desenvolvimento da plataforma <strong>Licitize</strong>, automações de pregão eletrônico, APIs FastAPI/Flask, scraping de dados, configuração de servidores VPS (Oracle, Azure), Nginx, Docker, bancos MySQL/PostgreSQL/MongoDB e segurança (Fail2Ban/UFW).
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">Licitize Platform</span>
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">RPAs &amp; Scraping</span>
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">VPS Oracle/Azure</span>
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">Nginx &amp; Docker</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Job 4: Freelancer & Projetos Próprios -->
+                    <article class="relative sm:pl-6 group">
+                        <div class="hidden sm:block absolute left-[-1.85rem] top-1.5 w-3.5 h-3.5 rounded-full bg-[#3a332c] border-4 border-[#0c0a09] group-hover:bg-brand-500 transition-colors"></div>
+                        <div class="glass-card rounded-2xl p-6 sm:p-7 border border-white/10">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <h3 class="font-display font-bold text-xl text-white">Freelancer &amp; Contratos Diretos</h3>
+                                <span class="font-mono text-xs text-[#9e9486]">Jan 2020 – Presente</span>
+                            </div>
+                            <p class="font-semibold text-brand-400 text-sm mb-3">G2, Escritórios Jurídicos &amp; 99Freelas</p>
+                            <p class="text-[#c4bbb0] text-sm leading-relaxed mb-4">
+                                Desenvolvimento do <strong>G2 Extratos</strong> (OCR inteligente com Docling e Mistral), <strong>RPA DS-160</strong> (Legaltech consular), bots de vendas com integração Pix e Mercado Pago (<strong class="text-white">até ~30 instâncias simultâneas</strong>), crawlers automatizados e microsserviços customizados.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">G2 Extratos</span>
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">DS-160 Legaltech</span>
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">Bots Telegram</span>
+                                <span class="px-2 py-0.5 rounded bg-white/[0.05] text-[11px] font-mono text-[#a89e90]">Gateway Pix</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="sobre" class="py-20 md:py-28 relative border-b border-white/[0.06] bg-[#090807]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    
+                    <!-- Bio Content -->
+                    <div class="lg:col-span-8">
+                        <div class="inline-flex items-center gap-2 font-mono text-xs text-brand-400 tracking-wider uppercase mb-2">
+                            <span class="w-2 h-0.5 bg-brand-500"></span> 04 — Perfil
+                        </div>
+                        <h2 class="font-display font-bold text-3xl md:text-4xl text-white tracking-tight mb-6">Sobre Mim &amp; Formação</h2>
+                        
+                        <div class="space-y-4 text-[#c4bbb0] text-base leading-relaxed">
+                            <p>
+                                Atuo com desenvolvimento de software desde 2016 e me especializei no ecossistema Python a partir de 2019. Minha jornada foi moldada pela resolução de problemas reais de negócios: integrando serviços financeiros, construindo robôs autônomos de alta concorrência e colocando microsserviços em produção.
+                            </p>
+                            <p>
+                                Acredito no papel do engenheiro <strong>full cycle</strong>: alguém que entende a dor do cliente, desenha o domínio, estrutura os fluxos assíncronos e assume a responsabilidade pela publicação e monitoramento.
+                            </p>
+                            <p>
+                                Sou graduando em <strong>Ciência da Computação (Estácio, 2024–2028)</strong>, com foco constante em padrões arquiteturais (Clean/Hexagonal), segurança da informação e engenharia de dados.
+                            </p>
+                        </div>
+
+                        <!-- Quick facts -->
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08]">
+                                <p class="text-xs font-mono text-[#9e9486] uppercase mb-1">Localização</p>
+                                <p class="text-white font-medium">Cariacica, Espírito Santo (ES)</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08]">
+                                <p class="text-xs font-mono text-[#9e9486] uppercase mb-1">Idiomas</p>
+                                <p class="text-white font-medium">Português (Nativo) · Inglês A2 (Técnico)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column Card -->
+                    <div class="lg:col-span-4">
+                        <div class="glass-card rounded-2xl p-7 border border-white/10 text-center">
+                            <div class="w-24 h-24 mx-auto mb-4 rounded-2xl overflow-hidden border-2 border-brand-500/40 p-1 bg-brand-950/40 shadow-xl shadow-brand-950/50">
+                                <img src="assets/avatar.png" alt="Foto de perfil de Isack Vitor" class="w-full h-full object-cover rounded-xl">
+                            </div>
+                            <h3 class="font-display font-bold text-xl text-white">Isack Vitor</h3>
+                            <p class="text-xs font-mono text-brand-400 mt-1">@Isaac-Foster</p>
+                            <p class="text-xs text-[#a89e90] mt-3 leading-relaxed">
+                                Backend Engineer focado em autonomia técnica, entrega de ponta a ponta e sistemas robustos.
+                            </p>
+                            <div class="mt-6 pt-5 border-t border-white/[0.08] flex justify-center gap-4">
+                                <a href="https://github.com/Isaac-Foster" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] text-white flex items-center justify-center transition-colors" aria-label="GitHub">
+                                    <i class="fa-brands fa-github text-lg"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/isack-foster" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] text-sky-400 flex items-center justify-center transition-colors" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin text-lg"></i>
+                                </a>
+                                <a href="https://wa.me/5527988090038" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] text-emerald-400 flex items-center justify-center transition-colors" aria-label="WhatsApp">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA & Contact Section -->
+        <section id="contato" class="py-20 md:py-28 relative bg-[#0c0a09] overflow-hidden">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 relative text-center">
+                
+                <div class="glass-card rounded-3xl p-8 sm:p-12 border border-brand-500/30 relative overflow-hidden shadow-2xl shadow-black">
+                    <!-- Glow behind -->
+                    <div class="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-brand-600/20 blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-amber-600/15 blur-3xl pointer-events-none"></div>
+
+                    <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-950/50 px-3 py-1 font-mono text-xs font-medium text-brand-300 mb-6">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span>
+                        Vamos conversar?
+                    </span>
+
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mb-4">
+                        Pronto para transformar sua demanda em código de produção?
+                    </h2>
+
+                    <p class="text-[#c4bbb0] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+                        Seja para construir APIs resilientes, integrar pagamentos, orquestrar bots no Telegram ou desenhar pipelines de IA local, estou à disposição para novos desafios e contratos.
+                    </p>
+
+                    <!-- Contact Actions -->
+                    <div class="flex flex-wrap justify-center gap-4 items-center">
+                        <a href="https://wa.me/5527988090038" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 px-6 py-3.5 text-sm sm:text-base font-semibold text-white shadow-xl shadow-brand-900/40 transition-all hover:shadow-brand-600/30 hover:-translate-y-0.5">
+                            <i class="fa-brands fa-whatsapp text-lg text-white" aria-hidden="true"></i> Conversar no WhatsApp
                         </a>
-                        <span class="text-xs text-[#8a8078] w-full sm:w-auto sm:ml-2">Cariacica/ES · CC na Estácio (2024–2028) · Inglês A2 (leitura técnica)</span>
+                        <a href="mailto:Isack.foster.ofc@gmail.com" class="inline-flex items-center gap-2.5 rounded-xl border border-white/15 bg-white/[0.06] hover:bg-white/[0.12] px-6 py-3.5 text-sm sm:text-base font-medium text-white transition-all hover:-translate-y-0.5">
+                            <i class="fa-solid fa-envelope text-brand-400" aria-hidden="true"></i> Isack.foster.ofc@gmail.com
+                        </a>
                     </div>
                 </div>
+
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="sobre" class="py-20 md:py-28 bg-[#0c0a09] text-[#cfc8bf] border-t border-[#c2410c]/30">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <p class="section-kicker mb-1 text-[#fb923c]">01 — Sobre</p>
-            <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-white mb-12">História profissional</h2>
-            <div class="max-w-3xl space-y-6 leading-relaxed">
-                <p>
-                    Atuo com desenvolvimento desde 2016 e com foco em Python desde 2019. Ao longo desse período, consolidei experiência em backend para produtos e operações que dependem de integração com terceiros, regras de negócio e confiabilidade em produção.
-                </p>
-                <p>
-                    Minha atuação costuma cobrir o ciclo completo de entrega: entendimento do problema, desenho da solução, implementação da API e dos fluxos assíncronos, observabilidade, testes e publicação em ambiente produtivo. O objetivo é manter previsibilidade técnica e reduzir fricção para o usuário final.
-                </p>
-                <p>
-                    Sou graduando em Ciência da Computação (Estácio, 2024-2028) e trabalho com práticas de engenharia como versionamento por fluxo, revisão de código, qualidade automatizada e documentação operacional.
-                </p>
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.07] bg-[#070605] py-12 text-[#9e9486] relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
+            <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded bg-brand-700/60 flex items-center justify-center text-white text-xs font-mono">IV</span>
+                <p>Isack Vitor Rosario Neto · <span class="text-[#f5f0e8]">Copyright © 2026</span></p>
             </div>
-        </div>
-    </section>
 
-    <section id="skills" class="py-20 md:py-24 bg-[#12100e] text-[#d6d3d1] border-y border-orange-500/20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <p class="section-kicker mb-1 text-[#fdba74]">02 — Skills</p>
-            <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight mb-4 text-white">Backend e forma de atuação</h2>
-            <p class="text-[#a8a29e] max-w-3xl mb-12 text-base md:text-lg leading-relaxed">
-                O foco principal é backend orientado a problema: transformar regra de negócio em fluxo confiável, com boa comunicação entre serviços e operação estável.
-            </p>
-            <div class="grid md:grid-cols-2 gap-6">
-                <article class="rounded-2xl border border-white/10 bg-white/[0.04] p-8">
-                    <h3 class="font-display font-bold text-xl text-white mb-4">Arquitetura e integração</h3>
-                    <p class="leading-relaxed text-[#d6d3d1]">
-                        Implementação de APIs e workers para integrações financeiras, gateways de pagamento, serviços legados e mensageria. Quando necessário, desenho filas para desacoplamento, idempotência e recuperação de falhas, mantendo o comportamento previsível mesmo em alto volume.
-                    </p>
-                </article>
-                <article class="rounded-2xl border border-white/10 bg-white/[0.04] p-8">
-                    <h3 class="font-display font-bold text-xl text-white mb-4">Confiabilidade e qualidade</h3>
-                    <p class="leading-relaxed text-[#d6d3d1]">
-                        Experiência prática com CI/CD, publicação contínua, monitoramento e segurança básica de aplicação/servidor. Familiaridade com testes unitários, end-to-end e de integração para cobrir fluxos críticos e reduzir regressão em evolução de produto.
-                    </p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="infra" class="py-20 md:py-28 bg-[#141210] text-[#e7e5e4] border-y border-orange-500/20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <p class="section-kicker mb-1 text-[#fdba74]">03 — Operação</p>
-            <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight mb-4 text-white">Entrega em produção sem depender de estrutura perfeita</h2>
-            <p class="text-[#a8a29e] max-w-3xl mb-14 text-base md:text-lg leading-relaxed">DevOps, CI/CD, filas e infraestrutura entram como meios para resolver problema de negócio com estabilidade, e não como fim em si.</p>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-8 hover:border-[#fb923c]/30 transition-colors">
-                    <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-server text-[#fb923c]" aria-hidden="true"></i> Plataforma de execução</h3>
-                    <p class="text-[#d6d3d1] leading-relaxed mb-4">
-                        Estruturo ambientes para manter entrega contínua e operação previsível: build, deploy, rollback, gestão de segredos e versionamento de serviços. Quando o contexto pede, assumo também configuração de servidor, proxy reverso e proteção básica de borda.
-                    </p>
-                    <p class="text-[#d6d3d1] leading-relaxed">
-                        O resultado esperado é reduzir tempo de resposta para incidentes, manter serviços disponíveis e preservar segurança operacional sem travar evolução de produto.
-                    </p>
-                </div>
-                <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-8 hover:border-[#fb923c]/30 transition-colors">
-                    <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-gears text-[#fb923c]" aria-hidden="true"></i> Operação orientada a fluxo</h3>
-                    <p class="text-[#d6d3d1] leading-relaxed mb-4">
-                        Além da API, trabalho em fluxo completo: ingestão de dados, processamento assíncrono, reprocessamento e integração com canais externos quando necessário.
-                    </p>
-                    <p class="text-[#d6d3d1] text-sm leading-relaxed border-l-2 border-[#fb923c]/40 pl-4">
-                        Isso inclui automações e conectores como parte da arquitetura de backend, sempre com foco em rastreabilidade, previsibilidade e experiência final do usuário.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experiencia" class="py-20 md:py-28 bg-[#12100e] text-[#cfc8bf] border-t border-[#c2410c]/25">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <p class="section-kicker mb-1 text-[#fb923c]">04 — Trabalho</p>
-            <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-white mb-14">Por onde passei</h2>
-
-            <div class="relative pl-8 md:pl-10 space-y-12 md:space-y-14 [&_strong]:text-[#fed7aa]">
-                <div class="timeline-line hidden sm:block" aria-hidden="true"></div>
-
-                <article class="relative sm:pl-4">
-                    <span class="text-xs font-medium text-[#ffedd5] bg-[#c2410c]/25 border border-orange-400/35 rounded-sm px-2 py-0.5">Atual</span>
-                    <h3 class="font-display font-bold text-xl mt-2 text-white">ClickPto</h3>
-                    <p class="font-mono text-sm text-[#78716c]">Set 2025 – presente · remoto</p>
-                    <p class="font-semibold text-[#fb923c]">Analista de Sistemas / Desenvolvedor Backend</p>
-                    <p class="mt-3 text-[#b8b0a8] max-w-2xl leading-relaxed text-sm md:text-base">
-                        FastAPI em bases legadas com evolução para <strong>arquitetura hexagonal</strong>; integrações financeiras (CorpXBank, E2Bank, MPCVault/OTC, Binance WebSocket, Coinext); <strong>split Pix</strong> em alto volume; segurança (JWT, TOTP, bcrypt); <strong>CI/CD</strong> com GitHub Actions, Docker, ECR e Coolify; GitFlow, Kanban e qualidade com pre-commit, Ruff e Pytest.
-                    </p>
-                </article>
-
-                <article class="relative sm:pl-4">
-                    <h3 class="font-display font-bold text-xl text-white">Crono Wise</h3>
-                    <p class="font-mono text-sm text-[#78716c]">Jul 2025 – ago 2025 · remoto</p>
-                    <p class="font-semibold text-[#fb923c]">Desenvolvedor Python</p>
-                    <p class="mt-3 text-[#b8b0a8] max-w-2xl leading-relaxed text-sm md:text-base">
-                        Automação para <strong>Corban</strong>: integração ao banco BTG via <strong>SOAP e Zeep</strong>; <strong>asyncio</strong> e semáforos para rate limit; filas com <strong>Celery</strong> e Redis em visão de Clean Architecture.
-                    </p>
-                </article>
-
-                <article class="relative sm:pl-4">
-                    <h3 class="font-display font-bold text-xl text-white">Rime Tecnologia</h3>
-                    <p class="font-mono text-sm text-[#78716c]">Out 2024 – jul 2025 · remoto</p>
-                    <p class="font-semibold text-[#fb923c]">Desenvolvedor Python / Full cycle</p>
-                    <p class="mt-3 text-[#b8b0a8] max-w-2xl leading-relaxed text-sm md:text-base">
-                        Ciclo completo com clientes: requisitos, sprints, modelagem e entrega. <strong>RPAs</strong>, APIs FastAPI/Flask, scraping, <strong>VPS</strong> (Oracle, Azure), Nginx, Docker, MySQL/PostgreSQL/MongoDB, Fail2Ban/UFW, testes e documentação — com responsabilidade técnica acima do escopo de estagiário.
-                    </p>
-                </article>
-
-                <article class="relative sm:pl-4 pb-2">
-                    <h3 class="font-display font-bold text-xl text-white">Freelancer</h3>
-                    <p class="font-mono text-sm text-[#78716c]">Jan 2020 – presente</p>
-                    <p class="font-semibold text-[#fb923c]">99Freelas &amp; projetos próprios</p>
-                    <p class="mt-3 text-[#b8b0a8] max-w-2xl leading-relaxed text-sm md:text-base border border-orange-500/25 bg-black/35 rounded-md p-4">
-                        Automações, bots, APIs e pagamentos do escopo ao deploy. Destaque: bot de vendas no Telegram com <strong>Pix</strong> e Mercado Pago (até ~30 instâncias simultâneas), scraping e gestão. Stack: FastAPI, Flask, Docker, PostgreSQL, MongoDB, Redis, Celery, S3, Oracle Cloud.
-                    </p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="projetos" class="py-20 md:py-28 bg-[#cfc3b2] border-t border-[#1c1814]/15">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <p class="section-kicker mb-1">05 — Projetos com acesso público</p>
-            <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-[#1c1814] mb-4">Projetos</h2>
-            <p class="text-[#454039] mb-12 max-w-2xl text-base leading-relaxed">Seleção de projetos que podem ser acessados, testados ou auditados por link público (repositório, bot ou demonstração aberta).</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <article class="h-full rounded-lg border border-[#1c1814]/18 bg-[#e5ddd1] p-6 md:p-7 flex flex-col ring-1 ring-[#1c1814]/5">
-                    <div class="flex justify-between items-start gap-4">
-                        <div>
-                            <span class="text-xs font-medium text-[#5c4d3f]">Recente</span>
-                            <h3 class="font-display font-bold text-2xl md:text-3xl mt-2 text-[#1c1814]">Andreza Correios</h3>
-                        </div>
-                        <i class="fa-solid fa-box text-2xl text-[#9a3412] shrink-0 opacity-90" aria-hidden="true"></i>
-                    </div>
-                    <p class="mt-4 text-[#454039] leading-relaxed flex-1">
-                        Bot no Telegram para <strong class="text-[#1c1814]">rastreio de encomendas</strong> via API dos Correios: notificações a cada mudança de status, acompanhamento visual do pacote — sem consultas manuais repetidas.
-                    </p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <span class="text-xs font-mono rounded-sm bg-[#1c1814] text-[#ece6dc] px-2 py-1">Telethon</span>
-                        <span class="chip text-xs font-mono px-2 py-1 rounded-sm">httpx</span>
-                        <span class="chip text-xs font-mono px-2 py-1 rounded-sm">PostgreSQL</span>
-                    </div>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <a href="https://t.me/Andreza_correios_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-md bg-[#9a3412] px-4 py-2 text-sm font-semibold text-[#f7f1ea] hover:bg-[#7c2d12] transition-colors">Telegram</a>
-                        <a href="https://www.linkedin.com/posts/isack-foster_andreza-correios-share-7456446986091716608-0RxP" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-md border border-[#1c1814]/20 bg-[#ddd4c4] px-4 py-2 text-sm font-medium text-[#1c1814] hover:bg-[#d0c6b6] transition-colors">LinkedIn</a>
-                    </div>
-                </article>
-
-                <article class="h-full rounded-lg border border-[#1c1814]/18 bg-[#e5ddd1] p-6 md:p-7 flex flex-col ring-1 ring-[#1c1814]/5">
-                    <div class="flex justify-between items-start gap-4">
-                        <div>
-                            <span class="text-xs font-medium text-[#5c4d3f]">SaaS pessoal em validação</span>
-                            <h3 class="font-display font-bold text-2xl md:text-3xl mt-2 text-[#1c1814]">MyCash</h3>
-                        </div>
-                        <i class="fa-solid fa-chart-line text-2xl text-[#9a3412] shrink-0 opacity-90" aria-hidden="true"></i>
-                    </div>
-                    <p class="mt-4 text-[#454039] leading-relaxed flex-1">
-                        Plataforma de gestão financeira construída para uso próprio e de amigos em ciclo contínuo de feedback. O foco é resolver problemas reais de rotina financeira com evolução incremental de produto, regras e fluxo operacional.
-                    </p>
-                    <p class="mt-3 text-[#454039] leading-relaxed">
-                        Inclui backend com autenticação e segurança (OTP e bcrypt), Redis para cache de sessão, integração de pagamento com PagSeguro, envio por SMTP e rotina de leitura de NFe a partir de dados da SEFAZ para apoiar conciliação e conferência.
-                    </p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <span class="text-xs font-mono rounded-sm bg-[#1c1814] text-[#ece6dc] px-2 py-1">FastAPI</span>
-                        <span class="chip text-xs font-mono px-2 py-1 rounded-sm">Redis (cache de sessão)</span>
-                        <span class="chip text-xs font-mono px-2 py-1 rounded-sm">PagSeguro</span>
-                        <span class="chip text-xs font-mono px-2 py-1 rounded-sm">OTP · bcrypt</span>
-                        <span class="chip text-xs font-mono px-2 py-1 rounded-sm">SMTP</span>
-                        <span class="chip text-xs font-mono px-2 py-1 rounded-sm">Leitura de NFe (SEFAZ)</span>
-                    </div>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <a href="https://mycash.fixteam.us/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-md bg-[#9a3412] px-4 py-2 text-sm font-semibold text-[#f7f1ea] hover:bg-[#7c2d12] transition-colors">Abrir aplicação</a>
-                    </div>
-                </article>
-
-                <article class="h-full rounded-lg border border-[#1c1814]/18 bg-[#e5ddd1] p-6 md:p-7 hover:border-[#9a3412]/35 transition-colors flex flex-col ring-1 ring-[#1c1814]/5">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-display font-bold text-lg text-[#1c1814]">LinkedIn Connector</h3>
-                        <i class="fa-brands fa-linkedin text-blue-600" aria-hidden="true"></i>
-                    </div>
-                    <p class="mt-2 text-sm text-[#57534e] leading-relaxed flex-1">Automação de conexões e rotinas de networking no LinkedIn, com módulo opcional de coleta de vagas para distribuição em canais externos.</p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <a href="https://github.com/Isaac-Foster/linkedin_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-md bg-[#9a3412] px-4 py-2 text-sm font-semibold text-[#f7f1ea] hover:bg-[#7c2d12] transition-colors">Repositório</a>
-                    </div>
-                </article>
-
-                <article class="h-full rounded-lg border border-[#1c1814]/18 bg-[#e5ddd1] p-6 md:p-7 hover:border-[#9a3412]/35 transition-colors flex flex-col ring-1 ring-[#1c1814]/5">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-display font-bold text-lg text-[#1c1814]">99Freelas</h3>
-                        <i class="fa-solid fa-briefcase text-cyan-700 shrink-0" aria-hidden="true"></i>
-                    </div>
-                    <p class="mt-2 text-sm text-[#57534e] leading-relaxed flex-1">Bot de notificação de novas oportunidades em plataforma freelancer, com filtro inicial e entrega contínua no Telegram.</p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <a href="https://t.me/nnfreelas" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-md bg-[#9a3412] px-4 py-2 text-sm font-semibold text-[#f7f1ea] hover:bg-[#7c2d12] transition-colors">Telegram</a>
-                        <a href="https://github.com/m3coder/99freelas_notifications_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-md border border-[#1c1814]/20 bg-[#ddd4c4] px-4 py-2 text-sm font-medium text-[#1c1814] hover:bg-[#d0c6b6] transition-colors">Repositório</a>
-                    </div>
-                    <p class="mt-3 font-mono text-[10px] text-[#5c4d3f]">Bot @nnfreelas</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <footer class="border-t border-black/10 bg-[#141210] text-[#a8a29e] py-14">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row md:items-end md:justify-between gap-10">
-            <div>
-                <p class="font-display font-bold text-white text-lg">Isack Vitor Rosario Neto</p>
-                <p class="mt-2 text-sm">Copyright © 2026 · Cariacica/ES</p>
-                <p class="mt-2 text-sm max-w-md">5 certificações Python (Udemy, 2020–2022) · Português nativo · Inglês A2 (leitura técnica)</p>
-                <p class="mt-1 font-mono text-xs text-[#78716c]">GitHub: @Isaac-Foster</p>
-            </div>
-            <nav class="flex flex-wrap gap-6 text-sm">
-                <a href="#sobre" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors">Sobre</a>
-                <a href="#skills" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors">Skills</a>
-                <a href="#infra" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors">Operação</a>
-                <a href="#experiencia" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors">Experiência</a>
-                <a href="https://github.com/Isaac-Foster" target="_blank" rel="noopener noreferrer" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors"><i class="fa-brands fa-github mr-1" aria-hidden="true"></i>GitHub</a>
-                <a href="https://linkedin.com/in/isack-foster" target="_blank" rel="noopener noreferrer" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors"><i class="fa-brands fa-linkedin mr-1" aria-hidden="true"></i>LinkedIn</a>
-                <a href="mailto:Isack.foster.ofc@gmail.com" class="text-[#e7e5e4] hover:text-[#fb923c] transition-colors"><i class="fa-solid fa-envelope mr-1" aria-hidden="true"></i>E-mail</a>
+            <nav class="flex flex-wrap items-center justify-center gap-6">
+                <a href="#top" class="hover:text-brand-400 transition-colors">Início</a>
+                <a href="#projetos" class="hover:text-brand-400 transition-colors">Projetos</a>
+                <a href="#skills" class="hover:text-brand-400 transition-colors">Skills</a>
+                <a href="#experiencia" class="hover:text-brand-400 transition-colors">Experiência</a>
+                <a href="https://github.com/Isaac-Foster" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors"><i class="fa-brands fa-github mr-1"></i>GitHub</a>
+                <a href="https://linkedin.com/in/isack-foster" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin mr-1"></i>LinkedIn</a>
             </nav>
         </div>
     </footer>
+
+    <!-- Client-side Project Filtering Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => {
+                        b.classList.remove('active', 'bg-brand-600', 'text-white', 'border-brand-600');
+                        b.classList.add('bg-white/[0.04]', 'text-[#c4bbb0]', 'border-white/10');
+                    });
+
+                    btn.classList.add('active', 'bg-brand-600', 'text-white', 'border-brand-600');
+                    btn.classList.remove('bg-white/[0.04]', 'text-[#c4bbb0]', 'border-white/10');
+
+                    const filter = btn.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        if (filter === 'all' || category === filter) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
